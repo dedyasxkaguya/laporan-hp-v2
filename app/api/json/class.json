@@ -1,0 +1,152 @@
+[
+    {
+      "id": "69f9e417b3eb7fffd9bc8339",
+      "grade": "X",
+      "name": "TKJ 1",
+      "vocation": "INFORMATIKA",
+      "uuid": "X TKJ 1",
+      "teacher_name": "Angelina Taruli R. Togatorop",
+      "classroom": "R.202",
+      "colors": {
+        "base_color": "#4B5563",
+        "primary_color": "#F59E0B",
+        "secondary_color": "#9CA3AF",
+        "subtle_color": "#FEF3C7"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc833a",
+      "grade": "X",
+      "name": "TKJ 2",
+      "vocation": "INFORMATIKA",
+      "uuid": "X TKJ 2",
+      "teacher_name": "R. Wisnu Sarjono, s.Pd, MT",
+      "classroom": "R.203",
+      "colors": {
+        "base_color": "#4B5563",
+        "primary_color": "#F59E0B",
+        "secondary_color": "#9CA3AF",
+        "subtle_color": "#FEF3C7"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc833b",
+      "grade": "XI",
+      "name": "TKJ",
+      "vocation": "INFORMATIKA",
+      "uuid": "XI TKJ",
+      "teacher_name": "Isya Anshori, M.Pd",
+      "classroom": "R.406",
+      "colors": {
+        "base_color": "#4B5563",
+        "primary_color": "#F59E0B",
+        "secondary_color": "#9CA3AF",
+        "subtle_color": "#FEF3C7"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc833c",
+      "grade": "X",
+      "name": "RPL",
+      "vocation": "INFORMATIKA",
+      "uuid": "X RPL",
+      "teacher_name": "Alzaro Rashad Prakas, S.Tr.",
+      "classroom": "R.205",
+      "colors": {
+        "base_color": "#000000",
+        "primary_color": "#1E3A8A",
+        "secondary_color": "#374151",
+        "subtle_color": "#DBEAFE"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc833d",
+      "grade": "X",
+      "name": "SIJA",
+      "vocation": "INFORMATIKA",
+      "uuid": "X SIJA",
+      "teacher_name": "Harry Nugroho, S.Kom",
+      "classroom": "R.206",
+      "colors": {
+        "base_color": "#EAB308",
+        "primary_color": "#10B981",
+        "secondary_color": "#FDE047",
+        "subtle_color": "#D1FAE5"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc833e",
+      "grade": "XI",
+      "name": "RPL",
+      "vocation": "INFORMATIKA",
+      "uuid": "XI RPL",
+      "teacher_name": "Wanto Ari Wibowo, S.Kom",
+      "classroom": "R.405",
+      "colors": {
+        "base_color": "#000000",
+        "primary_color": "#1E3A8A",
+        "secondary_color": "#374151",
+        "subtle_color": "#DBEAFE"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc833f",
+      "grade": "XI",
+      "name": "SIJA",
+      "vocation": "INFORMATIKA",
+      "uuid": "XI SIJA",
+      "teacher_name": "Ester Suryani Banjar Nahor",
+      "classroom": "R.408",
+      "colors": {
+        "base_color": "#EAB308",
+        "primary_color": "#10B981",
+        "secondary_color": "#FDE047",
+        "subtle_color": "#D1FAE5"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc8340",
+      "grade": "XII",
+      "name": "SIJA",
+      "vocation": "INFORMATIKA",
+      "uuid": "XII SIJA",
+      "teacher_name": "Sudirwan, M.Pd.",
+      "classroom": "R 103",
+      "colors": {
+        "base_color": "#EAB308",
+        "primary_color": "#10B981",
+        "secondary_color": "#FDE047",
+        "subtle_color": "#D1FAE5"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc8341",
+      "grade": "X",
+      "name": "DKV",
+      "vocation": "INFORMATIKA",
+      "uuid": "X DKV",
+      "teacher_name": "Siti Iswah Mawadah, S.Pd",
+      "classroom": "R 207",
+      "colors": {
+        "base_color": "#4C1D95",
+        "primary_color": "#8B5CF6",
+        "secondary_color": "#6D28D9",
+        "subtle_color": "#EDE9FE"
+      }
+    },
+    {
+      "id": "69f9e417b3eb7fffd9bc8342",
+      "grade": "XI",
+      "name": "DKV",
+      "vocation": "INFORMATIKA",
+      "uuid": "XI DKV",
+      "teacher_name": "Arlin Nuari, S.Pd",
+      "classroom": "R 307",
+      "colors": {
+        "base_color": "#4C1D95",
+        "primary_color": "#8B5CF6",
+        "secondary_color": "#6D28D9",
+        "subtle_color": "#EDE9FE"
+      }
+    }
+  ]
