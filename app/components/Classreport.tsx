@@ -107,7 +107,7 @@ const Classreport = () => {
                                             </div>
                                         }
                                     </td>
-                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4 capitalize'>
                                         {a.last_report ? a.last_report.name : "-"}
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-4 text-neutral-400'>

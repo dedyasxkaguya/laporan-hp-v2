@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Classreport from '../components/Classreport';
 import axios from 'axios';
+import Navbar from '../components/Navbar';
 export interface Data {
     _id: string;
     grade: Grade;
@@ -83,33 +84,36 @@ const Page = () => {
         updateTime()
     }, 1000);
     return (
-        <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto'>
-            <section className=' flex justify-between items-center'>
-                <div className=" p-2 px-4 rounded-xl bg-blue-200 text-blue-600 font-sans w-fit">
-                    Daftar Kelas SMKN 1 Jakarta
-                </div>
-                <div className="">
-                    <span className=' text-neutral-400'>Tanggal : </span>
-                    <span>{date} {time}</span>
-                </div>
-            </section>
-            <br />
-            <hr className=' text-neutral-400' />
-            <br />
-            <section className=' flex flex-col gap-4'>
-                <div className="">
-                    <p className=' text-2xl font-semibold font-mono'>Laporan Terbaru</p>
-                </div>
-                {data && valid && (
-                    <div className=" flex gap-2">
-                        <div className=" p-2 px-4 rounded-lg cursor-pointer bg-green-100 text-green-600 shadow">Laporan Valid : {valid}</div>
-                        <div className=" p-2 px-4 rounded-lg cursor-pointer bg-red-100 text-red-600 shadow">Laporan Invalid : {(data.length) - valid}</div>
+        <>
+            <Navbar />
+            <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop:"16dvh" }}>
+                <section className=' flex justify-between items-center'>
+                    <div className=" p-2 px-4 rounded-xl bg-blue-200 text-blue-600 font-sans w-fit">
+                        Daftar Kelas SMKN 1 Jakarta
                     </div>
-                )}
+                    <div className="">
+                        <span className=' text-neutral-400'>Tanggal : </span>
+                        <span>{date} {time}</span>
+                    </div>
+                </section>
+                <br />
                 <hr className=' text-neutral-400' />
-                <Classreport />
-            </section>
-        </main>
+                <br />
+                <section className=' flex flex-col gap-4'>
+                    <div className="">
+                        <p className=' text-2xl font-semibold font-mono'>Laporan Terbaru</p>
+                    </div>
+                    {data && valid && (
+                        <div className=" flex gap-2">
+                            <div className=" p-2 px-4 rounded-lg cursor-pointer bg-green-100 text-green-600 shadow">Laporan Valid : {valid}</div>
+                            <div className=" p-2 px-4 rounded-lg cursor-pointer bg-red-100 text-red-600 shadow">Laporan Invalid : {(data.length) - valid}</div>
+                        </div>
+                    )}
+                    <hr className=' text-neutral-400' />
+                    <Classreport />
+                </section>
+            </main>
+        </>
     )
 }
 

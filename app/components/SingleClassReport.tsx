@@ -78,7 +78,7 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                     {toLatestList.map((a, index) => {
                         return (
                             <tr key={index}>
-                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4 capitalize'>
                                     {a.name}
                                 </td>
                                 <td className='border border-neutral-200 border-r-0 border-l-0 p-4 font-semibold'>
