@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import SingleClassReport from '@/app/components/SingleClassReport';
+import Navbar from '@/app/components/Navbar';
 export interface Data {
     status: boolean;
     data: DataClass;
@@ -41,7 +42,7 @@ export interface Report {
     createdAt: Date;
     updatedAt: Date;
     __v: number;
-    image:string
+    image: string
 }
 
 
@@ -119,52 +120,55 @@ const Page = () => {
         updateTime()
     }, 1000);
     return (
-        <main className=' p-6 rounded-3xl w-fit shadow border border-neutral-200 mt-8 mx-auto mb-[16dvh]'>
-            <section className=' flex justify-between items-center'>
-                <div className=" p-2 px-4 rounded-xl bg-neutral-200 text-neutral-800 font-sans w-fit"
-                    style={{ backgroundColor: student_class?.colors.subtle_color, color: student_class?.colors.primary_color }}>
-                    Detail Kelas {student_class?.uuid}
-                </div>
-                <div className="">
-                    <span className=' text-neutral-400'>Tanggal : </span>
-                    <span>{date}, {time}</span>
-                </div>
-            </section>
-            <br />
-            <hr className=' text-neutral-400' />
-            <br />
-            {student_class && (
-                <section>
-                    <Classdetail data={student_class} />
-                </section>
-            )}
-            <br />
-            <hr className=' text-neutral-400' />
-            <br />
-            <section className=' flex flex-col gap-4'>
-                <div className="flex justify-between">
-                    <p className=' text-2xl font-semibold font-mono'>
-                        <span>Laporan Gawai</span>
-                        <span style={{ color: student_class?.colors.primary_color }}> {student_class?.uuid}</span>
-                    </p>
-                    <div className=" p-2 px-4 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-600 shadow">
-                        <i className=' bi bi-list-ul me-2'></i>
-                        <span>Total Data : {student_class?.reports.length}</span>
+        <>
+            <Navbar />
+            <main className=' p-6 rounded-3xl w-fit shadow border border-neutral-200 mt-8 mx-auto mb-[16dvh]' style={{ marginTop:"16dvh" }}>
+                <section className=' flex justify-between items-center'>
+                    <div className=" p-2 px-4 rounded-xl bg-neutral-200 text-neutral-800 font-sans w-fit"
+                        style={{ backgroundColor: student_class?.colors.subtle_color, color: student_class?.colors.primary_color }}>
+                        Detail Kelas {student_class?.uuid}
                     </div>
-                </div>
-                <div className=" flex gap-2 mb-2">
-                    <div className=" p-2 px-4 rounded-lg bg-blue-50 text-blue-600 shadow">Laporan Pengumpulan : {collect}</div>
-                    <div className=" p-2 px-4 rounded-lg bg-amber-50 text-amber-600 shadow">Laporan Peminjaman : {borrow}</div>
-                    <div className=" p-2 px-4 rounded-lg bg-green-50 text-green-600 shadow">Laporan Pengambilan : {take}</div>
-                </div>
-                <hr className=' text-neutral-400' />
-            </section>
-            {student_class && (
-                <section className=' mt-2'>
-                    <SingleClassReport data={student_class} />
+                    <div className="">
+                        <span className=' text-neutral-400'>Tanggal : </span>
+                        <span>{date}, {time}</span>
+                    </div>
                 </section>
-            )}
-        </main>
+                <br />
+                <hr className=' text-neutral-400' />
+                <br />
+                {student_class && (
+                    <section>
+                        <Classdetail data={student_class} />
+                    </section>
+                )}
+                <br />
+                <hr className=' text-neutral-400' />
+                <br />
+                <section className=' flex flex-col gap-4'>
+                    <div className="flex justify-between">
+                        <p className=' text-2xl font-semibold font-mono'>
+                            <span>Laporan Gawai</span>
+                            <span style={{ color: student_class?.colors.primary_color }}> {student_class?.uuid}</span>
+                        </p>
+                        <div className=" p-2 px-4 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-600 shadow">
+                            <i className=' bi bi-list-ul me-2'></i>
+                            <span>Total Data : {student_class?.reports.length}</span>
+                        </div>
+                    </div>
+                    <div className=" flex gap-2 mb-2">
+                        <div className=" p-2 px-4 rounded-lg bg-blue-50 text-blue-600 shadow">Laporan Pengumpulan : {collect}</div>
+                        <div className=" p-2 px-4 rounded-lg bg-amber-50 text-amber-600 shadow">Laporan Peminjaman : {borrow}</div>
+                        <div className=" p-2 px-4 rounded-lg bg-green-50 text-green-600 shadow">Laporan Pengambilan : {take}</div>
+                    </div>
+                    <hr className=' text-neutral-400' />
+                </section>
+                {student_class && (
+                    <section className=' mt-2'>
+                        <SingleClassReport data={student_class} />
+                    </section>
+                )}
+            </main>
+        </>
     )
 }
 
