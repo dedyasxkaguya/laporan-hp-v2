@@ -82,6 +82,7 @@ const Classreport = () => {
                     <tbody>
                         <tr>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Kelas</td>
+                            <td className=' text-neutral-400 p-4 text-xl font-mono'>Wali Kelas</td>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Guru</td>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Status</td>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Petugas</td>
@@ -91,12 +92,22 @@ const Classreport = () => {
                             return (
                                 <tr key={index}>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
-                                        <Link href={'/class/' + a._id} className=" p-2 px-4 rounded-xl shadow" style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
+                                        <Link href={'/class/' + a._id} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60" 
+                                        style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
                                             {a.grade} {a.name}
                                         </Link>
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-4 font-semibold'>
                                         {a.teacher_name}
+                                    </td>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                        {a.last_report 
+                                            ? <p>{a.teacher_name}</p>
+                                            : <div className=" text-red-600">
+                                                <i className="bi bi-exclamation-circle me-2"></i>
+                                                <span>Tidak ada</span>
+                                            </div>
+                                        }
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
                                         {a.last_report
