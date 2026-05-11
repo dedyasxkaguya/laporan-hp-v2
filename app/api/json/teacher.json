@@ -196,5 +196,12 @@
         "name": "Arlin Nuari, S.Pd",
         "uuid": "19890104 2020122015",
         "classroom": "R 307"
+    },
+    {
+        "class": "none",
+        "name": "Bukhari S.Pd",
+        "uuid": "none",
+        "classroom": "none"
     }
+
 ]

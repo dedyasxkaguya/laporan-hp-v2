@@ -82,6 +82,7 @@ const Classreport = () => {
                     <tbody>
                         <tr>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Kelas</td>
+                            <td className=' text-neutral-400 p-4 text-xl font-mono'>Wali Kelas</td>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Guru</td>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Status</td>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Petugas</td>
@@ -98,6 +99,15 @@ const Classreport = () => {
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-4 font-semibold'>
                                         {a.teacher_name}
+                                    </td>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                        {a.last_report 
+                                            ? <p>{a.teacher_name}</p>
+                                            : <div className=" text-red-600">
+                                                <i className="bi bi-exclamation-circle me-2"></i>
+                                                <span>Tidak ada</span>
+                                            </div>
+                                        }
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
                                         {a.last_report
