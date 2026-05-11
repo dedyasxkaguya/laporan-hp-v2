@@ -125,7 +125,7 @@ const Page = () => {
         await window.print()
     }
     const handleExport = (data:Report[], student_class:string) => {
-        return console.log(data)
+        // return console.log(data)
         const WB = XLSX.utils.book_new()
         const WS = XLSX.utils.json_to_sheet(data)
 
@@ -133,7 +133,7 @@ const Page = () => {
 
         XLSX.utils.book_append_sheet(WB,WS,`Laporan Kelas ${student_class}`)
 
-        XLSX.writeFile(WB,`Laporan Kelas ${student_class}, ${date}`)
+        XLSX.writeFile(WB,`Laporan Kelas ${student_class}, ${date}.xlsx`)
     }
     return (
         <>
