@@ -15,9 +15,9 @@ const Navbar = () => {
             </section>
             <section>
                 <div className="">
-                    <Link href={'/class'} className=' cursor-pointer hover:opacity-75 text-blue-800 text-2xl bg-neutral-200 transition-all duration-500'>
-                        <i className="bi bi-file-earmark-graph me-2"></i>
+                    <Link href={'/class'} className=' cursor-pointer hover:opacity-75 bg-blue-800 text-2xl text-neutral-50 transition-all duration-500 p-2 px-4 rounded-xl'>
                         <span>Class</span>
+                        <i className="bi bi-mortarboard mx-2"></i>
                     </Link>
                 </div>
             </section>
