@@ -1,207 +1,512 @@
 [
-    {
-        "class": "X DPIB 1",
-        "name": "Agustini Mardelyni, S.Pd.",
-        "uuid": "19910817 2022212008",
-        "classroom": "R.AOI"
-    },
-    {
-        "class": "X DPIB 2",
-        "name": "Untung Sarwo Prayogo, S.Pd.",
-        "uuid": "19690327 2008011013",
-        "classroom": "R-305"
-    },
-    {
-        "class": "X TKP 1",
-        "name": "Windi Fauziah, S.Pd.",
-        "uuid": "19950325 2022212004",
-        "classroom": "R.A04"
-    },
-    {
-        "class": "X TKP 2",
-        "name": "Muhammad Rizki, S.Pd.",
-        "uuid": "19920701 2022211003",
-        "classroom": "BENGKEL BANGUNAN 1"
-    },
-    {
-        "class": "XI DPIB 1",
-        "name": "Nia Wtdyaningsih",
-        "uuid": "198501182024212013",
-        "classroom": "R.A02"
-    },
-    {
-        "class": "XI DPIB 2",
-        "name": "Baidha Azra, S.Pd.",
-        "uuid": "19930415 2019032008",
-        "classroom": "R.303"
-    },
-    {
-        "class": "XI TKP 1",
-        "name": "Ana Amalia Islami, ST.",
-        "uuid": "19940503 2019032025",
-        "classroom": "R.404"
-    },
-    {
-        "class": "XI TKP 2",
-        "name": "Fauziah Chair Fadil, S.Pd.",
-        "uuid": "199111222023212030",
-        "classroom": "R.A05"
-    },
-    {
-        "class": "X TITL 1",
-        "name": "Hetiny Muthia Rahmy, M.Pd.",
-        "uuid": "199311262022212005",
-        "classroom": "BENGKEL LISTRIK 5"
-    },
-    {
-        "class": "X TITL 2",
-        "name": "Mutmainah Naiyan, S.Pd.",
-        "uuid": "199401052023212036",
-        "classroom": "R.A08"
-    },
-    {
-        "class": "X TITL 3",
-        "name": "Alwi Nur Faizal, S.Pd.",
-        "uuid": "19920112 2022211002",
-        "classroom": "R-A09"
-    },
-    {
-        "class": "XI TITL 1",
-        "name": "Neneng Desi Mulawati",
-        "uuid": "198512172024212017",
-        "classroom": "BENGKEL LISTRIK 4"
-    },
-    {
-        "class": "XI TITL 2",
-        "name": "Silvia Fajriani, S.Pd",
-        "uuid": "19941026 2022212006",
-        "classroom": "BENGKEL LISTRIK 3"
-    },
-    {
-        "class": "XI TITL 3",
-        "name": "Noviar Pahlawanti, S.Pd",
-        "uuid": "19831110 202212015",
-        "classroom": "R.AIO"
-    },
-    {
-        "class": "X TP 1",
-        "name": "Ihsan Ruliyanda, S.Pd",
-        "uuid": "19920915 2022211001",
-        "classroom": "BENGKEL MESIN 1"
-    },
-    {
-        "class": "X TP 2",
-        "name": "Luke Nugroho, S.Pd",
-        "uuid": "19920523 2020121019",
-        "classroom": "R.B06"
-    },
-    {
-        "class": "X DGM",
-        "name": "Amir Hamzah, S.Pd",
-        "uuid": "198907242023211020",
-        "classroom": "R.COI"
-    },
-    {
-        "class": "XI TP 1",
-        "name": "Drs. Asep Dody Junaedi Mansur",
-        "uuid": "19660923 2016111002",
-        "classroom": "BENGKEL MESIN 2"
-    },
-    {
-        "class": "XI TP 2",
-        "name": "Gatot Sutiono",
-        "uuid": "197201132024211002",
-        "classroom": "R.C02"
-    },
-    {
-        "class": "XI DGM",
-        "name": "Nabil Ridho, S.Pd",
-        "uuid": "19950315 2022211003",
-        "classroom": "R.C03"
-    },
-    {
-        "class": "X TKR",
-        "name": "Endah Kemalasari, S.Pd",
-        "uuid": "19790418 2014082002",
-        "classroom": "R.BOI"
-    },
-    {
-        "class": "XI TKR 1",
-        "name": "Zainal Abidin, S.Pd.l.",
-        "uuid": "19870111 2020121003",
-        "classroom": "R.B02"
-    },
-    {
-        "class": "XI TKR 2",
-        "name": "Hardy Widjaya, SPd",
-        "uuid": "197912042014121001",
-        "classroom": "R.B03"
-    },
-    {
-        "class": "X TKJ 1",
-        "name": "Angelina Taruli R. Togatorop",
-        "uuid": "199010102023212078",
-        "classroom": "R.202"
-    },
-    {
-        "class": "X TKJ 2",
-        "name": "R. Wisnu Sarjono, s.Pd, MT",
-        "uuid": "19720824 2008011010",
-        "classroom": "R.203"
-    },
-    {
-        "class": "XI TKJ",
-        "name": "Isya Anshori, M.Pd",
-        "uuid": "199103062023211022",
-        "classroom": "R.406"
-    },
-    {
-        "class": "X RPL",
-        "name": "Alzaro Rashad Prakas, S.Tr.",
-        "uuid": "1030397",
-        "classroom": "R.205"
-    },
-    {
-        "class": "X SIJA",
-        "name": "Harry Nugroho, S.Kom",
-        "uuid": "19811206 2022211006",
-        "classroom": "R.206"
-    },
-    {
-        "class": "XI RPL",
-        "name": "Wanto Ari Wibowo, S.Kom",
-        "uuid": "19840707 2022211013",
-        "classroom": "R.405"
-    },
-    {
-        "class": "XI SIJA",
-        "name": "Ester Suryani Banjar Nahor",
-        "uuid": "198809092024212041",
-        "classroom": "R.408"
-    },
-    {
-        "class": "XII SIJA",
-        "name": "Sudirwan, M.Pd.",
-        "uuid": "196812232022211002",
-        "classroom": "R 103"
-    },
-    {
-        "class": "X DKV",
-        "name": "Siti Iswah Mawadah, S.Pd",
-        "uuid": "19931126 2022212005",
-        "classroom": "R 207"
-    },
-    {
-        "class": "XI DKV",
-        "name": "Arlin Nuari, S.Pd",
-        "uuid": "19890104 2020122015",
-        "classroom": "R 307"
-    },
-    {
-        "class": "none",
-        "name": "Bukhari S.Pd",
-        "uuid": "none",
-        "classroom": "none"
-    }
-
+  {
+    "class": "none",
+    "name": "Awalusilman, M.Pd",
+    "uuid": "19720502 1998031009",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Leti Yulieti, S.Pd",
+    "uuid": "19660722 1990032005",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Drs. Kuwat",
+    "uuid": "19660806 2000121001",
+    "classroom": "none"
+  },
+  {
+    "class": "X TKJ 2",
+    "name": "R. Wisnu Sarjono, S.Pd, MT",
+    "uuid": "19720824 2008011010",
+    "classroom": "R.203"
+  },
+  {
+    "class": "none",
+    "name": "Siti Hajar Muyasaroh, S.Pd",
+    "uuid": "19740505 2006042037",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Endah Kemalasari, S.Pd",
+    "uuid": "19821211 2006042021",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Drs. Martua Sinaga",
+    "uuid": "19661222 2008011003",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Udin Komarudin, S.Pd",
+    "uuid": "19680415 2008011019",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Sunaryo, S.Pd",
+    "uuid": "19700216 2008011012",
+    "classroom": "none"
+  },
+  {
+    "class": "X DPIB 2",
+    "name": "Untung Sarwo Prayogo, S.Pd",
+    "uuid": "19690327 2008011013",
+    "classroom": "R-305"
+  },
+  {
+    "class": "none",
+    "name": "Indah Zakiah, S.Pd",
+    "uuid": "19720222 2008012021",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Rustama, S.Pd",
+    "uuid": "19750903 2008011012",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Aminah Gultom, S.Pd",
+    "uuid": "19790527 2008012027",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Atik Yuli Hastuty, M.Pd",
+    "uuid": "19770705 2008012033",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Dedy Subroto, S.Pd",
+    "uuid": "19771213 2014121001",
+    "classroom": "none"
+  },
+  {
+    "class": "XI TKR 2",
+    "name": "Hardy Widjaya, S.Pd",
+    "uuid": "19791204 2014121001",
+    "classroom": "R.B03"
+  },
+  {
+    "class": "none",
+    "name": "Bukari, S.Pd",
+    "uuid": "19691011 2014121002",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Anna Mailani, S.Pd",
+    "uuid": "19660527 2016062001",
+    "classroom": "none"
+  },
+  {
+    "class": "X TKR",
+    "name": "Endah Sri Wahyuni, S.Pd",
+    "uuid": "197904182014082002",
+    "classroom": "R.BOI"
+  },
+  {
+    "class": "none",
+    "name": "Drs. Sri Raharjo",
+    "uuid": "19660709 2016051001",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Drs. Rukman",
+    "uuid": "19670212 2016111001",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Drs. Sudirman",
+    "uuid": "19680110 2017081001",
+    "classroom": "none"
+  },
+  {
+    "class": "XI TP 1",
+    "name": "Drs. Asep Dody Junaedi Mansur",
+    "uuid": "19660923 2016111002",
+    "classroom": "BENGKEL MESIN 2"
+  },
+  {
+    "class": "XI DKV",
+    "name": "Arlin Nuari, S.Pd",
+    "uuid": "19890104 2020122015",
+    "classroom": "R 307"
+  },
+  {
+    "class": "X TP 2",
+    "name": "Luke Nugroho, S.Pd",
+    "uuid": "19920523 2020121019",
+    "classroom": "R.B06"
+  },
+  {
+    "class": "XI TKR 1",
+    "name": "Zainal Abidin, S.Pd.I",
+    "uuid": "19870111 2020121003",
+    "classroom": "R.B02"
+  },
+  {
+    "class": "none",
+    "name": "Rachmat Hidayat, S.Pd",
+    "uuid": "19780504 2014121003",
+    "classroom": "none"
+  },
+  {
+    "class": "XI TKP 1",
+    "name": "Ana Amalia Islami, ST",
+    "uuid": "19940503 2019032025",
+    "classroom": "R.404"
+  },
+  {
+    "class": "none",
+    "name": "Yuwita Novyanti, S.Pd",
+    "uuid": "19911111 2019032021",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Erfan Wahyu Utomo, S.Pd",
+    "uuid": "19940605 2019031009",
+    "classroom": "none"
+  },
+  {
+    "class": "XI DPIB 2",
+    "name": "Baidha Azra, S.Pd",
+    "uuid": "19930415 2019032008",
+    "classroom": "R.303"
+  },
+  {
+    "class": "none",
+    "name": "Jumiyati, S.Pd",
+    "uuid": "19851225 2020122011",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Lukito Gunawan, S.Pd",
+    "uuid": "19720419 2014081001",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Sri Wahyuni",
+    "uuid": "197309012008012010",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Mujiantoro, S.Pd, MMSI",
+    "uuid": "19770905 2022211005",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Yuli Astuti, S.Pd",
+    "uuid": "19840719 2022212008",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Tri Oke Mahendra, S.Pd",
+    "uuid": "19861021 2022211003",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Likasina Br Sembiring, M.Pd",
+    "uuid": "19831014 2022212018",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Nina Rosiana, S.Pd",
+    "uuid": "1985090 22022212014",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Amrul Khairullah, ST",
+    "uuid": "19710408 2022211002",
+    "classroom": "none"
+  },
+  {
+    "class": "XI RPL",
+    "name": "Wanto Ari Wibowo, S.Kom",
+    "uuid": "19840707 2022211013",
+    "classroom": "R.405"
+  },
+  {
+    "class": "none",
+    "name": "Jeffrey Immanuel H.N, S.Pd",
+    "uuid": "19900323 2022211002",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Novi Ari Wibowo, S.Kom",
+    "uuid": "19881126 2022211005",
+    "classroom": "none"
+  },
+  {
+    "class": "X TKP 2",
+    "name": "Muhammad Rizki, S.Pd",
+    "uuid": "19920701 2022211003",
+    "classroom": "BENGKEL BANGUNAN 1"
+  },
+  {
+    "class": "XI TITL 2",
+    "name": "Silvia Fajriani, S.Pd",
+    "uuid": "19941026 2022212006",
+    "classroom": "BENGKEL LISTRIK 3"
+  },
+  {
+    "class": "none",
+    "name": "Latifah Nurul Hidayati, S.Pd",
+    "uuid": "19950416 2022212004",
+    "classroom": "none"
+  },
+  {
+    "class": "X TKP 1",
+    "name": "Windi Fauziah, S.Pd",
+    "uuid": "19950325 2022212004",
+    "classroom": "R.A04"
+  },
+  {
+    "class": "none",
+    "name": "Nurisa Amanda, S.Pd",
+    "uuid": "1996050 22022212004",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Fitria Nur Arifiani, S.Pd",
+    "uuid": "19970127 2022212002",
+    "classroom": "none"
+  },
+  {
+    "class": "XI TITL 3",
+    "name": "Noviar Pahlawanti, S.Pd",
+    "uuid": "19831110 2022212015",
+    "classroom": "R.AIO"
+  },
+  {
+    "class": "none",
+    "name": "Agus Tri Maulidyanto, S.Pd",
+    "uuid": "19940809 2022211003",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Giri Wicaksono, S.Pd",
+    "uuid": "19951218 2022211003",
+    "classroom": "none"
+  },
+  {
+    "class": "X TP 1",
+    "name": "Ihsan Ruliyanda, S.Pd",
+    "uuid": "19920915 2022211001",
+    "classroom": "BENGKEL MESIN 1"
+  },
+  {
+    "class": "X TITL 3",
+    "name": "Alwi Nur Faizal, S.Pd",
+    "uuid": "19920112 2022211002",
+    "classroom": "R-A09"
+  },
+  {
+    "class": "X DPIB 1",
+    "name": "Agustini Mardelyni, S.Pd",
+    "uuid": "19910817 2022212008",
+    "classroom": "R.AOI"
+  },
+  {
+    "class": "X SIJA",
+    "name": "Harry Nugroho, ST",
+    "uuid": "19811206 2022211006",
+    "classroom": "R.206"
+  },
+  {
+    "class": "none",
+    "name": "Arman Rivai, S.Pd",
+    "uuid": "19930411 2022211002",
+    "classroom": "none"
+  },
+  {
+    "class": "XI DGM",
+    "name": "Nabil Ridho, S.Pd",
+    "uuid": "19950315 2022211003",
+    "classroom": "R.C03"
+  },
+  {
+    "class": "none",
+    "name": "Sutris Janta Surbakti",
+    "uuid": "19940127 2022211003",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Muhamad Prasojo Joko Ispono, S.Pd",
+    "uuid": "199004072022211017",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Abdul Gafur, M.Pd",
+    "uuid": "197703112022210009",
+    "classroom": "none"
+  },
+  {
+    "class": "X TITL 1",
+    "name": "Hetiny Muthia Rahmy, M.Pd",
+    "uuid": "19931126 2022212005",
+    "classroom": "BENGKEL LISTRIK 5"
+  },
+  {
+    "class": "none",
+    "name": "Ahmad Bukhari, S.Pd",
+    "uuid": "199603102022211008",
+    "classroom": "none"
+  },
+  {
+    "class": "XII SIJA",
+    "name": "Sudirwan, M.Pd",
+    "uuid": "19681223 2022211002",
+    "classroom": "R 103"
+  },
+  {
+    "class": "none",
+    "name": "Fariady Kelanantoro, M.Pd",
+    "uuid": "197009142022211003",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Dekson Yoni Toto, S.Pd",
+    "uuid": "197706082023211003",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Wahyu Purwaningsih, S.Pd",
+    "uuid": "199007062023212033",
+    "classroom": "none"
+  },
+  {
+    "class": "X DGM",
+    "name": "Amir Hamzah, S.Pd",
+    "uuid": "198907242023211020",
+    "classroom": "R.COI"
+  },
+  {
+    "class": "X TITL 2",
+    "name": "Mutmainnah Naiyan, S.Pd",
+    "uuid": "199401052023212036",
+    "classroom": "R.A08"
+  },
+  {
+    "class": "none",
+    "name": "Dewi Nurmiati, S.Pd",
+    "uuid": "199303182023212045",
+    "classroom": "none"
+  },
+  {
+    "class": "XI TKJ",
+    "name": "Isya Anshori, M.Pd",
+    "uuid": "199103062023211022",
+    "classroom": "R.406"
+  },
+  {
+    "class": "none",
+    "name": "Citra Nindi Umayah, S.Pd",
+    "uuid": "199505092023212034",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Ridho Achmad Fikri Madani, S.Pd",
+    "uuid": "199608022023211009",
+    "classroom": "none"
+  },
+  {
+    "class": "X DKV",
+    "name": "Siti Iswah Mawadah, S.Pd.I",
+    "uuid": "199406102023212035",
+    "classroom": "R 207"
+  },
+  {
+    "class": "XI TKP 2",
+    "name": "Fauziah Chair Fadil, S.Pd",
+    "uuid": "199111222023212030",
+    "classroom": "R.A05"
+  },
+  {
+    "class": "X TKJ 1",
+    "name": "Angelina Taruli R. Togatorop",
+    "uuid": "199010102023212078",
+    "classroom": "R.202"
+  },
+  {
+    "class": "none",
+    "name": "Daniel Solin",
+    "uuid": "199302252023211016",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Febri Ditya",
+    "uuid": "198702032024212029",
+    "classroom": "none"
+  },
+  {
+    "class": "XI DPIB 1",
+    "name": "Nia Widyaningsih",
+    "uuid": "198501182024212013",
+    "classroom": "R.A02"
+  },
+  {
+    "class": "XI TP 2",
+    "name": "Gatot Sutiono",
+    "uuid": "197201132024211002",
+    "classroom": "R.C02"
+  },
+  {
+    "class": "XI SIJA",
+    "name": "Ester Suryani Banjar Nahor",
+    "uuid": "198809092024212041",
+    "classroom": "R.408"
+  },
+  {
+    "class": "XI TITL 1",
+    "name": "Neneng Desi Mulawati",
+    "uuid": "198512172024212017",
+    "classroom": "BENGKEL LISTRIK 4"
+  },
+  {
+    "class": "none",
+    "name": "Nikye Nurarafah, S.Pd",
+    "uuid": "199403312025212128",
+    "classroom": "none"
+  },
+  {
+    "class": "none",
+    "name": "Syarifudin, S.pd",
+    "uuid": "1002809",
+    "classroom": "none"
+  },
+  {
+    "class": "X RPL",
+    "name": "Alzaro Rashad Prakas",
+    "uuid": "1030397",
+    "classroom": "R.205"
+  }
 ]
