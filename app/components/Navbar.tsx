@@ -1,8 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import smk from '../../public/smk.svg'
+import { usePathname } from 'next/navigation'
 
 const Navbar = () => {
+    const location = usePathname()
+    const isHome = location.includes("class") ? false : true
     return (
         <main className=' w-full p-4 flex justify-between items-center shadow fixed bg-neutral-200/20 backdrop-blur-xl top-0 right-0' >
             <section className=' '>
@@ -10,7 +13,12 @@ const Navbar = () => {
                 hover:shadow hover:opacity-75"
                     href={'/'}>
                     <Image src={smk} alt="" width={32} height={32} />
-                    <p className=' font-mono font-semibold text-xl drop-shadow-2xl'>Laporan Pengumpulan Gawai</p>
+                    {isHome && (
+                        <p className=' font-mono font-semibold text-xl drop-shadow-2xl'>Laporan Pengumpulan Gawai</p>
+                    )}
+                    {!isHome && (
+                        <p className=' font-mono font-semibold text-xl drop-shadow-2xl'>Home</p>
+                    )}
                 </Link>
             </section>
             <section>

@@ -1,13 +1,14 @@
 'use client'
 
 import Classdetail from '@/app/components/Classdetail';
-import Statusbox from '@/app/components/Statusbox';
 import axios from 'axios';
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import SingleClassReport from '@/app/components/SingleClassReport';
 import Navbar from '@/app/components/Navbar';
+import * as XLSX from "xlsx"
+
 export interface Data {
     status: boolean;
     data: DataClass;
@@ -119,6 +120,16 @@ const Page = () => {
     setInterval(() => {
         updateTime()
     }, 1000);
+
+    const handlePrint = async () => {
+        await window.print()
+    }
+    const handleExport = (data:Report[], student_class:string) => {
+        const WB = XLSX.utils.book_new()
+        const WS = XLSX.utils.json_to_sheet(data)
+        XLSX.utils.book_append_sheet(WB,WS,`Laporan Kelas ${student_class}`)
+        
+    }
     return (
         <>
             <Navbar />
@@ -167,6 +178,22 @@ const Page = () => {
                         <SingleClassReport data={student_class} />
                     </section>
                 )}
+                <section className=' flex gap-4 pt-8 text-xl'>
+                    <button type="button" className=' p-2 px-4 border border-blue-800 text-blue-800 bg-blue-100 rounded-xl shadow transition-all 
+                    duration-500 font-semibold cursor-pointer hover:opacity-60'
+                    onClick={()=>handlePrint()}>
+                        <span>Print</span>
+                        <i className=' bi bi-printer-fill mx-2'></i>
+                    </button>
+                    {student_class && (
+                        <button type="button" className=' p-2 px-4 border border-green-800 text-green-800 bg-green-100 rounded-xl shadow transition-all 
+                        duration-500 font-semibold cursor-pointer hover:opacity-60'
+                        onClick={()=>handleExport(student_class.reports , student_class?.uuid)}>
+                        <span>Import To Excel</span>
+                        <i className=' bi bi-file-earmark-spreadsheet-fill mx-2'></i>
+                    </button>
+                    )}
+                </section>
             </main>
         </>
     )
