@@ -86,7 +86,7 @@ const Page = () => {
     return (
         <>
             <Navbar />
-            <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop:"16dvh" }}>
+            <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop: "16dvh" }}>
                 <section className=' flex justify-between items-center'>
                     <div className=" p-2 px-4 rounded-xl bg-blue-200 text-blue-600 font-sans w-fit">
                         Daftar Kelas SMKN 1 Jakarta
@@ -107,6 +107,16 @@ const Page = () => {
                         <div className=" flex gap-2">
                             <div className=" p-2 px-4 rounded-lg cursor-pointer bg-green-100 text-green-600 shadow">Laporan Valid : {valid}</div>
                             <div className=" p-2 px-4 rounded-lg cursor-pointer bg-red-100 text-red-600 shadow">Laporan Invalid : {(data.length) - valid}</div>
+                        </div>
+                    )}
+                    {!data && (
+                        <div className=" flex gap-2">
+                            <div className=" p-2 px-4 rounded-lg bg-green-100 text-green-600 shadow opacity-75 cursor-not-allowed">
+                                Laporan Valid : 0
+                            </div>
+                            <div className=" p-2 px-4 rounded-lg bg-red-100 text-red-600 shadow opacity-75 cursor-not-allowed">
+                                Laporan Invalid : 0
+                            </div>
                         </div>
                     )}
                     <hr className=' text-neutral-400' />

@@ -88,12 +88,46 @@ const Classreport = () => {
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Petugas</td>
                             <td className=' text-neutral-400 p-4 text-xl font-mono'>Tanggal</td>
                         </tr>
+                        {!data && (
+                            <tr>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                    <Link href={'/class/'} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60 bg-neutral-400 text-neutral-400">
+                                        X-RPL
+                                    </Link>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4 font-semibold'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        Alzaro Rashad Prakas
+                                    </div>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        <span>Tidak ada</span>
+                                    </div>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        <span>Tidak ada</span>
+                                    </div>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4 capitalize p-4'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        syeera dan callylaa
+                                    </div>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        Senin, 11 Mei 2026
+                                    </div>
+                                </td>
+                            </tr>
+                        )}
                         {data?.map((a, index) => {
                             return (
                                 <tr key={index}>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
-                                        <Link href={'/class/' + a._id} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60" 
-                                        style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
+                                        <Link href={'/class/' + a._id} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60"
+                                            style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
                                             {a.grade} {a.name}
                                         </Link>
                                     </td>
@@ -101,8 +135,8 @@ const Classreport = () => {
                                         {a.teacher_name}
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
-                                        {a.last_report 
-                                            ? <p>{a.teacher_name}</p>
+                                        {a.last_report
+                                            ? <p>{a.last_report.teacher}</p>
                                             : <div className=" text-red-600">
                                                 <i className="bi bi-exclamation-circle me-2"></i>
                                                 <span>Tidak ada</span>

@@ -3,7 +3,7 @@ export interface iStatus {
 }
 const Statusbox = ({ tipe }: iStatus) => {
     return (
-        <div className={`${tipe == "Pengumpulan" ? "text-blue-600" : tipe == "Pengambilan" ? "text-green-600" : "text-amber-600"}`}>
+        <div className={`${tipe == "Pengumpulan" ? "text-blue-600" : tipe == "Pengambilan" ? "text-green-600" : "text-amber-600"} cursor-pointer`}>
             <i className={`bi text-lg ${tipe == "Pengumpulan"
                 ? "bi-arrow-down-circle"
                 : tipe == "Pengambilan"

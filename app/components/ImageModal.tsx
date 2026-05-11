@@ -35,8 +35,8 @@ const ImageModal = ({ src, func, name, type, colors, uuid }: ImageModalProps) =>
                     <img src="https://placehold.co/600x400?text=Tidak+Ada+Foto" alt="" className=' rounded-2xl' />
                 )}
             </section>
-            <section className=' flex justify-between w-full'>
-                <div className=" p-2 px-4 rounded-xl shadow" style={{ backgroundColor: colors.subtle_color, color: colors.primary_color }}>
+            <section className=' flex justify-between w-full items-center'>
+                <div className=" p-2 px-4 rounded-xl shadow cursor-pointer" style={{ backgroundColor: colors.subtle_color, color: colors.primary_color }}>
                     <p>{name}</p>
                 </div>
                 <Statusbox tipe={type} />
