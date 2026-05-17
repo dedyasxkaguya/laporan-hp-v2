@@ -3,12 +3,14 @@ import Link from 'next/link'
 import smk from '../../public/smk.svg'
 import { usePathname } from 'next/navigation'
 
-const Navbar = () => {
+const Navbar = ({ isGlass }: { isGlass: boolean }) => {
     const location = usePathname()
     const isHome = location.includes("class") ? false : true
     return (
-        <main className=' w-full flex justify-between items-center shadow fixed bg-neutral-200/20 backdrop-blur-xl top-0 right-0 
-        p-2 lg:p-4 text-xs lg:text-base' >
+        <main className={`w-full flex justify-between items-center shadow fixed bg-neutral-200/20 backdrop-blur-xl top-0 right-0 
+        p-2 lg:p-4 text-xs lg:text-base transition-all duration-500 ${isGlass
+                ? " scale-80 rounded-4xl mt-4 mx-auto"
+                : " scale-100 mt-0"}`} >
             <section className=' '>
                 <Link className=" p-2 gap-4 flex items-center rounded-full shadow bg-neutral-50 text-blue-800 transition-all duration-500 
                 hover:bg-blue-800 hover:text-neutral-50 text-xs lg:text-base hover:shadow hover:opacity-75 pe-4 lg:pe-8 "

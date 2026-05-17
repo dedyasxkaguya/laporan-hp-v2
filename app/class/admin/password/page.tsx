@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import Classreport from '../components/Classreport';
+import Classreport from '../../../components/Classreport';
 import axios from 'axios';
-import Navbar from '../components/Navbar';
-import { checkDevice } from '../components/check';
-import Forbidden from '../components/Error/Forbidden';
+import Navbar from '../../../components/Navbar';
+import { checkDevice } from '../../../components/check';
+import Forbidden from '../../../components/Error/Forbidden';
 import Lenis from 'lenis';
 export interface Data {
     _id: string;
@@ -109,7 +109,7 @@ const Page = () => {
     setInterval(() => {
         updateTime()
     }, 1000);
-    if (isAndroid) {
+    if (!isAndroid) {
         return (
             <Forbidden />
         )
@@ -118,7 +118,7 @@ const Page = () => {
         return (
             <>
                 <Navbar isGlass={scroll > .1 ? true : false} />
-                <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop: "16dvh", marginBottom:"24dvh" }}>
+                <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop: "16dvh" }}>
                     <section className=' flex justify-between items-start lg:items-center flex-col lg:flex-row gap-2 '>
                         <div className=" p-2 px-4 rounded-xl bg-blue-200 text-blue-600 font-sans w-fit text-xs lg:text-base">
                             Daftar Kelas SMKN 1 Jakarta
@@ -156,7 +156,7 @@ const Page = () => {
                             </div>
                         )}
                         <hr className=' text-neutral-400' />
-                        <Classreport />
+                        <Classreport isAdmin={true} />
                     </section>
                 </main>
             </>

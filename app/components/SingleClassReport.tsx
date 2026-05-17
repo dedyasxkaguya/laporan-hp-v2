@@ -57,7 +57,7 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
         setShow(!show)
     }
 
-    const handlePhoto = (img: string,name: string,type: string) => {
+    const handlePhoto = (img: string, name: string, type: string) => {
         setPhoto(img)
         setName(name)
         setType(type)
@@ -98,7 +98,7 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                                 <td className='border border-neutral-200 border-r-0 border-l-0 hidden lg:table-cell p-2 lg:p-4 text-xs lg:text-base'>
                                     {a.image && (
                                         <img src={a.image} alt="" className=' h-16 rounded-xl m-2 shadow'
-                                            onClick={() => handlePhoto(a.image , a.name , a.report_type)} />
+                                            onClick={() => handlePhoto(a.image, a.name, a.report_type)} />
                                     )}
                                     {!a.image && (
                                         <img src={"https://placehold.co/600x400?text=Tidak+Ada+Foto"} alt="" className=' h-16 rounded-xl m-2 shadow' />
@@ -109,7 +109,7 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                     })}
                 </tbody>
             </table>
-            <section className=' mt-4'>
+            <section className=' mt-4 p-2'>
                 <div className="">
                     <p className=' font-semibold font-mono text-base lg:text-2xl'>
                         <span>Diagram Laporan Gawai</span>
@@ -127,10 +127,12 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                         </select>
                     </div>
                 </div>
-                <ChartElement latestData={toLatestList} length={len} kelas={data.uuid} />
+                <section>
+                    <ChartElement latestData={toLatestList} length={len} kelas={data.uuid} />
+                </section>
             </section>
             {photo && show && name && type && (
-                <ImageModal src={photo} func={()=>handleShow()} name={name} type={type} colors={data.colors} uuid={data.uuid}/>
+                <ImageModal src={photo} func={() => handleShow()} name={name} type={type} colors={data.colors} uuid={data.uuid} />
             )}
         </main>
     )

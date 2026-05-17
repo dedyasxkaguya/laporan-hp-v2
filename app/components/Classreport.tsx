@@ -50,7 +50,7 @@ export enum Vocation {
     Informatika = "INFORMATIKA",
 }
 
-const Classreport = () => {
+const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
     const [data, setData] = useState<Datum[]>()
     useEffect(() => {
         axios.get<Data>("/api/classes")
@@ -126,10 +126,18 @@ const Classreport = () => {
                             return (
                                 <tr key={index} className=' text-xs lg:text-base'>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4'>
-                                        <Link href={'/class/' + a._id} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60"
-                                            style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
-                                            {a.grade} {a.name}
-                                        </Link>
+                                        {isAdmin && (
+                                            <Link href={`/class/${a._id}/password`} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60"
+                                                style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
+                                                {a.grade} {a.name}
+                                            </Link>
+                                        )}
+                                        {!isAdmin && (
+                                            <Link href={'/class/' + a._id} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60"
+                                                style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
+                                                {a.grade} {a.name}
+                                            </Link>
+                                        )}
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 font-semibold hidden lg:table-cell p-2 lg:p-4'>
                                         {a.teacher_name}
@@ -144,16 +152,9 @@ const Classreport = () => {
                                         }
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4'>
-                                        {/* {a.last_report
-                                            ? <Statusbox tipe={a.last_report.report_type} />
-                                            : <div className=" text-red-600">
-                                            <i className="bi bi-exclamation-circle me-2"></i>
-                                            <span>Tidak ada</span>
-                                            </div>
-                                            } */}
-                                            <Statusbox tipe={a.last_report?.report_type} />
+                                        <Statusbox tipe={a.last_report?.report_type} />
                                     </td>
-                                    <td className='border border-neutral-200 border-r-0 border-l-0 capitalize max-w-[24dvw] lg:max-w-fit truncate p-2 lg:p-4'>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 capitalize max-w-[48dvw] lg:max-w-fit truncate p-2 lg:p-4'>
                                         {a.last_report ? a.last_report.name : "-"}
                                     </td>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 text-neutral-400 hidden lg:table-cell p-2 lg:p-4'>

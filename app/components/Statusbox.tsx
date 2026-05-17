@@ -4,9 +4,9 @@ export interface iStatus {
 const Statusbox = ({ tipe }: iStatus) => {
     if (!tipe) {
         return (
-            <div className={` text-red-600 cursor-pointer flex gap-2 items-center justify-start`}>
+            <div className={` text-red-600 cursor-pointer flex gap-2 items-center justify-center lg:justify-start`}>
                 <i className={`bi text-lg bi-exclamation-circle`}></i>
-                <span>Tidak ada</span>
+                <span className=" hidden lg:inline">Tidak ada</span>
             </div>
         )
     }

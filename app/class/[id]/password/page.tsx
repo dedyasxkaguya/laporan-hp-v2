@@ -53,7 +53,7 @@ export interface Report {
 const Page = () => {
     const params = useParams()
     const { id } = params
-    const [scroll, setScroll] = useState<number>(0)
+    const [scroll,setScroll] = useState<number>(0)
     const [isAndroid, setCheckOS] = useState<boolean>()
     const [time, timeSet] = useState<string>()
     const [date, dateSet] = useState<string>()
@@ -159,14 +159,14 @@ const Page = () => {
 
         XLSX.writeFile(WB, `Laporan Kelas ${student_class}, ${date}.xlsx`)
     }
-    if (isAndroid) {
+    if (!isAndroid) {
         return (
             <Forbidden />
         )
     } else {
         return (
             <>
-                <Navbar isGlass={scroll > .1 ? true : false} />
+                <Navbar isGlass={scroll > .1 ? true : false}/>
                 <main className=' shadow border border-neutral-200 mt-8 mx-auto mb-[16dvh] p-4 rounded-3xl lg:p-6 w-[96dvw] lg:w-fit' style={{ marginTop: "16dvh" }}>
                     <section className=' flex justify-between items-center text-xs lg:text-base'>
                         <div className=" p-2 px-4 rounded-xl bg-neutral-200 text-neutral-800 font-sans w-fit"
