@@ -87,11 +87,11 @@ const Page = () => {
         <>
             <Navbar />
             <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop: "16dvh" }}>
-                <section className=' flex justify-between items-center'>
-                    <div className=" p-2 px-4 rounded-xl bg-blue-200 text-blue-600 font-sans w-fit">
+                <section className=' flex justify-between items-start lg:items-center flex-col lg:flex-row gap-2 '>
+                    <div className=" p-2 px-4 rounded-xl bg-blue-200 text-blue-600 font-sans w-fit text-xs lg:text-base">
                         Daftar Kelas SMKN 1 Jakarta
                     </div>
-                    <div className="">
+                    <div className=" text-xs lg:text-base">
                         <span className=' text-neutral-400'>Tanggal : </span>
                         <span>{date} {time}</span>
                     </div>
@@ -101,20 +101,24 @@ const Page = () => {
                 <br />
                 <section className=' flex flex-col gap-4'>
                     <div className="">
-                        <p className=' text-2xl font-semibold font-mono'>Laporan Terbaru</p>
+                        <p className=' font-semibold font-mono text-lg lg:text-2xl'>Laporan Terbaru</p>
                     </div>
                     {data && valid && (
                         <div className=" flex gap-2">
-                            <div className=" p-2 px-4 rounded-lg cursor-pointer bg-green-100 text-green-600 shadow">Laporan Valid : {valid}</div>
-                            <div className=" p-2 px-4 rounded-lg cursor-pointer bg-red-100 text-red-600 shadow">Laporan Invalid : {(data.length) - valid}</div>
+                            <div className=" p-2 px-4 rounded-lg cursor-pointer bg-green-100 text-green-600 shadow text-xs lg:text-base">
+                                Laporan Valid : {valid}
+                            </div>
+                            <div className=" p-2 px-4 rounded-lg cursor-pointer bg-red-100 text-red-600 shadow text-xs lg:text-base">
+                                Laporan Invalid : {(data.length) - valid}
+                            </div>
                         </div>
                     )}
                     {!data && (
                         <div className=" flex gap-2">
-                            <div className=" p-2 px-4 rounded-lg bg-green-100 text-green-600 shadow opacity-75 cursor-not-allowed">
+                            <div className=" p-2 px-4 rounded-lg bg-green-100 text-green-600 shadow opacity-75 cursor-not-allowed text-xs lg:text-base">
                                 Laporan Valid : 0
                             </div>
-                            <div className=" p-2 px-4 rounded-lg bg-red-100 text-red-600 shadow opacity-75 cursor-not-allowed">
+                            <div className=" p-2 px-4 rounded-lg bg-red-100 text-red-600 shadow opacity-75 cursor-not-allowed text-xs lg:text-base">
                                 Laporan Invalid : 0
                             </div>
                         </div>

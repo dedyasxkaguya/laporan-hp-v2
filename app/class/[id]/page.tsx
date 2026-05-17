@@ -124,22 +124,22 @@ const Page = () => {
     const handlePrint = async () => {
         await window.print()
     }
-    const handleExport = (data:Report[], student_class:string) => {
+    const handleExport = (data: Report[], student_class: string) => {
         // return console.log(data)
         const WB = XLSX.utils.book_new()
         const WS = XLSX.utils.json_to_sheet(data)
 
-        const date = new Date().toLocaleDateString("id-ID",{dateStyle:"full"})
+        const date = new Date().toLocaleDateString("id-ID", { dateStyle: "full" })
 
-        XLSX.utils.book_append_sheet(WB,WS,`Laporan Kelas ${student_class}`)
+        XLSX.utils.book_append_sheet(WB, WS, `Laporan Kelas ${student_class}`)
 
-        XLSX.writeFile(WB,`Laporan Kelas ${student_class}, ${date}.xlsx`)
+        XLSX.writeFile(WB, `Laporan Kelas ${student_class}, ${date}.xlsx`)
     }
     return (
         <>
             <Navbar />
-            <main className=' p-6 rounded-3xl w-fit shadow border border-neutral-200 mt-8 mx-auto mb-[16dvh]' style={{ marginTop:"16dvh" }}>
-                <section className=' flex justify-between items-center'>
+            <main className=' shadow border border-neutral-200 mt-8 mx-auto mb-[16dvh] p-4 rounded-2xl lg:p-6 lg:rounded-3xl w-[96dvw] lg:w-fit' style={{ marginTop: "16dvh" }}>
+                <section className=' flex justify-between items-center text-xs lg:text-base'>
                     <div className=" p-2 px-4 rounded-xl bg-neutral-200 text-neutral-800 font-sans w-fit"
                         style={{ backgroundColor: student_class?.colors.subtle_color, color: student_class?.colors.primary_color }}>
                         Detail Kelas {student_class?.uuid}
@@ -162,19 +162,28 @@ const Page = () => {
                 <br />
                 <section className=' flex flex-col gap-4'>
                     <div className="flex justify-between">
-                        <p className=' text-2xl font-semibold font-mono'>
+                        <p className=' font-semibold font-mono text-lg lg:text-2xl'>
                             <span>Laporan Gawai</span>
                             <span style={{ color: student_class?.colors.primary_color }}> {student_class?.uuid}</span>
                         </p>
-                        <div className=" p-2 px-4 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-600 shadow">
+                        <div className=" p-2 px-4 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-600 shadow text-xs lg:text-base">
                             <i className=' bi bi-list-ul me-2'></i>
                             <span>Total Data : {student_class?.reports.length}</span>
                         </div>
                     </div>
-                    <div className=" flex gap-2 mb-2">
-                        <div className=" p-2 px-4 rounded-lg bg-blue-50 text-blue-600 shadow">Laporan Pengumpulan : {collect}</div>
-                        <div className=" p-2 px-4 rounded-lg bg-amber-50 text-amber-600 shadow">Laporan Peminjaman : {borrow}</div>
-                        <div className=" p-2 px-4 rounded-lg bg-green-50 text-green-600 shadow">Laporan Pengambilan : {take}</div>
+                    <div className=" flex gap-2 mb-2 flex-wrap">
+                        <div className=" p-2 px-4 rounded-lg bg-blue-50 text-blue-600 shadow text-xs lg:text-base">
+                            <span className=' hidden lg:inline'>Laporan</span>
+                            <span>Pengumpulan : {collect}</span>
+                        </div>
+                        <div className=" p-2 px-4 rounded-lg bg-amber-50 text-amber-600 shadow text-xs lg:text-base">
+                            <span className=' hidden lg:inline'>Laporan</span>
+                            <span>Peminjaman : {borrow}</span>
+                        </div>
+                        <div className=" p-2 px-4 rounded-lg bg-green-50 text-green-600 shadow text-xs lg:text-base">
+                            <span className=' hidden lg:inline'>Laporan</span>
+                            <span>Pengambilan : {take}</span>
+                        </div>
                     </div>
                     <hr className=' text-neutral-400' />
                 </section>
@@ -183,20 +192,20 @@ const Page = () => {
                         <SingleClassReport data={student_class} />
                     </section>
                 )}
-                <section className=' flex gap-4 pt-8 text-xl'>
+                <section className=' flex gap-4 pt-8 text-sm lg:text-xl'>
                     <button type="button" className=' p-2 px-4 border border-blue-800 text-blue-800 bg-blue-100 rounded-xl shadow transition-all 
-                    duration-500 font-semibold cursor-pointer hover:opacity-60'
-                    onClick={()=>handlePrint()}>
+                    duration-500 font-semibold cursor-pointer hover:opacity-60 text-xs lg:text-base'
+                        onClick={() => handlePrint()}>
                         <span>Print</span>
                         <i className=' bi bi-printer-fill mx-2'></i>
                     </button>
                     {student_class && (
                         <button type="button" className=' p-2 px-4 border border-green-800 text-green-800 bg-green-100 rounded-xl shadow transition-all 
-                        duration-500 font-semibold cursor-pointer hover:opacity-60'
-                        onClick={()=>handleExport(student_class.reports , student_class?.uuid)}>
-                        <span>Import To Excel</span>
-                        <i className=' bi bi-file-earmark-spreadsheet-fill mx-2'></i>
-                    </button>
+                        duration-500 font-semibold cursor-pointer hover:opacity-60 text-xs lg:text-base'
+                            onClick={() => handleExport(student_class.reports, student_class?.uuid)}>
+                            <span>Import To Excel</span>
+                            <i className=' bi bi-file-earmark-spreadsheet-fill mx-2'></i>
+                        </button>
                     )}
                 </section>
             </main>

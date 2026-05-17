@@ -63,11 +63,11 @@ const Fields = ({ label, icon, isDisabled, func, isTime, type, isDataSet, defaul
   if (defaultValue) {
     return (
       <main className='flex flex-col gap-2'>
-        <label htmlFor="" className={`${isDisabled ? "text-neutral-400" : "text-blue-600"} font-semibold`}>
-          <i className={`bi bi-${icon} text-xl me-2`}></i>
-          <span>{label}</span>
+        <label htmlFor="" className={`${isDisabled ? "text-neutral-400" : "text-blue-600"} font-semibold flex items-center`}>
+          <i className={`bi bi-${icon} text-base lg:text-xl me-2`}></i>
+          <span className=' text-xs lg:text-base'>{label}</span>
         </label>
-        <input type="text" name="" disabled={isDisabled} className=' p-2 rounded-lg border border-neutral-300 shadow disabled:bg-neutral-200 disabled:cursor-not-allowed'
+        <input type="text" name="" disabled={isDisabled} className=' rounded-lg border border-neutral-300 shadow disabled:bg-neutral-200 disabled:cursor-not-allowed text-xs lg:text-base p-1 lg:p-2'
           onChange={(e) => func(e)} list={isDataSet ? "dataList" : ""} value={defaultValue} />
         {isDataSet && (
           <datalist id='dataList'>
