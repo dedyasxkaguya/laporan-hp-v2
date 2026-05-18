@@ -7,6 +7,8 @@ import Navbar from '../../../components/Navbar';
 import { checkDevice } from '../../../components/check';
 import Forbidden from '../../../components/Error/Forbidden';
 import Lenis from 'lenis';
+import { useParams } from 'next/navigation';
+import { checkAdmin } from '@/app/lib/checkAdmin';
 export interface Data {
     _id: string;
     grade: Grade;
@@ -50,14 +52,18 @@ export enum Vocation {
 
 
 const Page = () => {
+    const [isAdmin,setAdmin] = useState<boolean>(false)
     const [isAndroid, setCheckOS] = useState<boolean>(false)
     const [scroll, setScroll] = useState<number>(0)
     const [time, timeSet] = useState<string>()
     const [date, dateSet] = useState<string>()
     const [data, setData] = useState<Data[]>()
     const [valid, setValid] = useState<number>()
+    const params = useParams()
+    const {password} = params
 
     const updateTime = () => {
+
         const d = new Date()
         const time = d.toLocaleDateString("id-ID", {
             hour: "2-digit",
@@ -72,11 +78,17 @@ const Page = () => {
         dateSet(date)
     }
     useEffect(() => {
+        const verify = async () => {
+            if(password){
+                setAdmin(await checkAdmin(password.toString()))
+            }
+        }
+        verify()
         const lenis = new Lenis({
             autoRaf: true,
             lerp: 0.1,
             smoothWheel: true,
-            duration: 1.5
+            duration: 1.5,
         })
         lenis.start()
         lenis.on("scroll", (e) => {
@@ -109,7 +121,7 @@ const Page = () => {
     setInterval(() => {
         updateTime()
     }, 1000);
-    if (!isAndroid) {
+    if (!isAndroid || !isAdmin) {
         return (
             <Forbidden />
         )

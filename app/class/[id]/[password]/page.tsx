@@ -11,6 +11,7 @@ import * as XLSX from "xlsx"
 import { checkDevice } from '@/app/components/check';
 import Forbidden from '@/app/components/Error/Forbidden';
 import Lenis from 'lenis';
+import { checkAdmin } from '@/app/lib/checkAdmin';
 
 export interface Data {
     status: boolean;
@@ -52,7 +53,8 @@ export interface Report {
 
 const Page = () => {
     const params = useParams()
-    const { id } = params
+    const { id, password } = params
+    const [admin,setAdmin] = useState<boolean>(false)
     const [scroll,setScroll] = useState<number>(0)
     const [isAndroid, setCheckOS] = useState<boolean>()
     const [time, timeSet] = useState<string>()
@@ -77,6 +79,12 @@ const Page = () => {
     }
 
     useEffect(() => {
+        const verify = async () => {
+            if(password){
+                setAdmin(await checkAdmin(password.toString()))
+            }
+        }
+        verify()
         const lenis = new Lenis({
             autoRaf: true,
             lerp: 0.1,
@@ -87,6 +95,7 @@ const Page = () => {
         lenis.on("scroll", (e) => {
             setScroll(e.progress !== 0 ? e.progress : .1)
         })
+        console.log(lenis)
         axios.get("/api")
             .then(data => {
                 console.log(data.data)
@@ -159,7 +168,7 @@ const Page = () => {
 
         XLSX.writeFile(WB, `Laporan Kelas ${student_class}, ${date}.xlsx`)
     }
-    if (!isAndroid) {
+    if (!isAndroid || !admin) {
         return (
             <Forbidden />
         )

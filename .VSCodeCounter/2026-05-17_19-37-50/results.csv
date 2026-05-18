@@ -1,0 +1,51 @@
+"filename", "language", "JSON with Comments", "Markdown", "JavaScript", "JSON", "TypeScript", "XML", "TypeScript JSX", "PostCSS", "comment", "blank", "total"
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/AGENTS.md", "Markdown", 0, 2, 0, 0, 0, 0, 0, 0, 2, 2, 6
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/README.md", "Markdown", 0, 23, 0, 0, 0, 0, 0, 0, 0, 14, 37
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/classes/[id]/route.ts", "TypeScript", 0, 0, 0, 0, 12, 0, 0, 0, 0, 1, 13
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/classes/route.ts", "TypeScript", 0, 0, 0, 0, 66, 0, 0, 0, 0, 6, 72
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/json/class.json", "JSON", 0, 0, 0, 152, 0, 0, 0, 0, 0, 0, 152
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/json/report.json", "JSON", 0, 0, 0, 14, 0, 0, 0, 0, 0, 1, 15
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/json/teacher.json", "JSON", 0, 0, 0, 512, 0, 0, 0, 0, 0, 0, 512
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/reports/route.ts", "TypeScript", 0, 0, 0, 0, 43, 0, 0, 0, 0, 4, 47
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/route.ts", "TypeScript", 0, 0, 0, 0, 4, 0, 0, 0, 0, 1, 5
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/upload/route.ts", "TypeScript", 0, 0, 0, 0, 19, 0, 0, 0, 0, 2, 21
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/class/[id]/page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 231, 0, 1, 13, 245
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/class/[id]/password/page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 231, 0, 1, 13, 245
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/class/admin/password/page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 156, 0, 0, 12, 168
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/class/page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 156, 0, 0, 12, 168
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Camera.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 90, 0, 5, 7, 102
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/ChartElement.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 134, 0, 1, 16, 151
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Classdetail.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 53, 0, 0, 6, 59
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Classreport.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 167, 0, 0, 8, 175
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Error/Forbidden.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 25, 0, 0, 2, 27
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/FieldSelect.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 65, 0, 1, 7, 73
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Fields.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 101, 0, 0, 5, 106
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Form.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 189, 0, 2, 27, 218
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Hero.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 14, 0, 0, 2, 16
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/ImageModal.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 45, 0, 0, 3, 48
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Navbar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 38, 0, 0, 2, 40
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/SingleClassReport.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 130, 0, 0, 11, 141
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Statusbox.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 24, 0, 0, 1, 25
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/check.ts", "TypeScript", 0, 0, 0, 0, 6, 0, 0, 0, 0, 1, 7
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/globals.css", "PostCSS", 0, 0, 0, 0, 0, 0, 0, 20, 0, 2, 22
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/layout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 31, 0, 0, 5, 36
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/lib/cloudinary.ts", "TypeScript", 0, 0, 0, 0, 7, 0, 0, 0, 0, 2, 9
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/lib/connectMongo.ts", "TypeScript", 0, 0, 0, 0, 10, 0, 0, 0, 0, 2, 12
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/lib/uploadIimage.ts", "TypeScript", 0, 0, 0, 0, 17, 0, 0, 0, 0, 3, 20
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/models/classSchema.ts", "TypeScript", 0, 0, 0, 0, 11, 0, 0, 0, 0, 3, 14
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/models/reportSchema.ts", "TypeScript", 0, 0, 0, 0, 23, 0, 0, 0, 0, 5, 28
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/models/testSchema.ts", "TypeScript", 0, 0, 0, 0, 7, 0, 0, 0, 0, 3, 10
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/app/page.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 57, 0, 0, 1, 58
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/eslint.config.mjs", "JavaScript", 0, 0, 14, 0, 0, 0, 0, 0, 2, 3, 19
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/next.config.ts", "TypeScript", 0, 0, 0, 0, 7, 0, 0, 0, 0, 4, 11
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/package-lock.json", "JSON", 0, 0, 0, 7229, 0, 0, 0, 0, 0, 1, 7230
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/package.json", "JSON", 0, 0, 0, 39, 0, 0, 0, 0, 0, 1, 40
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/postcss.config.mjs", "JavaScript", 0, 0, 6, 0, 0, 0, 0, 0, 0, 2, 8
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/public/file.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/public/globe.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/public/next.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/public/smk.svg", "XML", 0, 0, 0, 0, 0, 10, 0, 0, 0, 1, 11
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/public/vercel.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/public/window.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"/media/dedyas/New Volume/Projects/pengumpulan-hp/tsconfig.json", "JSON with Comments", 34, 0, 0, 0, 0, 0, 0, 0, 0, 1, 35
+"Total", "-", 34, 25, 20, 7946, 232, 15, 1937, 20, 15, 218, 10462

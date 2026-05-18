@@ -9,17 +9,18 @@ const Forbidden = () => {
                     403
                 </p>
             </div>
-            <section className=" p-2 rounded-2xl shadow bg-neutral-900 max-w-[64dvw] text-neutral-100">
+            <section className=" p-4 rounded-3xl shadow bg-neutral-900 max-w-[64dvw] text-neutral-100">
                 <div className=" p-2 rounded-xl bg-red-600/16 text-red-400 font-semibold mb-4">
                     <i className="bi bi-shield-slash me-2"></i>
                     <span className=' bg-linear-to-t from-red-400 to-red-600 bg-clip-text text-transparent'>Unauthorized access</span>
                 </div>
-                <div className='pt-2 font-mono font-light'>
-                    <span className=' text-neutral-400 text-sm'>Informasi : </span>
+                <div className='font-mono font-light'>
+                    <span className=' text-neutral-400 text-sm'>Information : </span>
                     <br />
-                    <span className=' text-xl'>Kamu tidak memiliki akses dan kepentingan untuk halaman ini.</span>
+                    <span className=' text-xl'>You dont have permissions to access this page</span>
                 </div>
             </section>
+            {/* <Login /> */}
         </main>
     )
 }
