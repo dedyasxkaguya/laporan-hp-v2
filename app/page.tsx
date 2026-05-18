@@ -8,7 +8,9 @@ import axios from 'axios'
 import { checkDevice } from './components/check'
 import Forbidden from './components/Error/Forbidden'
 import Lenis from 'lenis'
+import Welcomepage from './components/Welcomepage'
 const Page = () => {
+  const [isWelcome, setWelcome] = useState<boolean>(true)
   const [isAndroid, setCheckOS] = useState<boolean>()
   const [scroll, setScroll] = useState<number>(0)
   useEffect(() => {
@@ -33,6 +35,11 @@ const Page = () => {
         }
       })
   }, [])
+
+  const handleWelcome = () => {
+    setWelcome(!isWelcome)
+  }
+
   if (isAndroid) {
     return (
       <Forbidden />
@@ -40,8 +47,11 @@ const Page = () => {
   } else {
     return (
       <>
+        {isWelcome && (
+          <Welcomepage func={handleWelcome}/>
+        )}
         <section className=' w-dvw flex items-center justify-center'>
-          <Navbar isGlass={scroll > .1 ? true : false } />
+          <Navbar isGlass={scroll > .1 ? true : false} />
         </section>
         <main className=' rounded-4xl shadow-2xl min-h-[80dvh] w-[64dvw] mx-auto '
           style={{ marginTop: "16dvh", marginBottom: "8dvh" }}>

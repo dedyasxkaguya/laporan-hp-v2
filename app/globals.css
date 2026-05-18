@@ -4,7 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
 }
-html{
+html {
   scroll-behavior: smooth;
 }
 @theme inline {
@@ -13,12 +13,25 @@ html{
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-.modalBox{
+.modalBox {
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
-.fixed-center{
+.fixed-center {
   right: 50%;
-  transform: translate(50%,0);
+  transform: translate(50%, 0);
+}
+.fade-up {
+  animation: animate-fade 2s cubic-bezier(.47,1.64,.41,.8);
+}
+@keyframes animate-fade {
+  0% {
+    transform: translateY(50dvh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
