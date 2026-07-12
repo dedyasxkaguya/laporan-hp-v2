@@ -33,6 +33,7 @@ export interface IReport {
 }
 
 export async function GET() {
+  connectMongo()
   try {
     const data = await Class.find().lean()
     const classData:Data[] = []

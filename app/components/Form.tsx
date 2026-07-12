@@ -3,15 +3,16 @@ import Fields from './Fields'
 import FieldSelect, { customObject } from './FieldSelect'
 import Camera from './Camera'
 import dataTeacher from '../api/json/teacher.json'
-import dataClass from '../api/json/class.json'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { ClassInterface } from '../lib/studentclass'
 
 
 const Form = () => {
 
   const [type, setType] = useState<string>("")
   const [classId, setClass] = useState<string>()
+  const [classes, setClasses] = useState<ClassInterface[]>()
 
   const [isNama, setNama] = useState<boolean>(false)
   const [isKelas, setKelas] = useState<boolean>(false)
@@ -19,22 +20,24 @@ const Form = () => {
   const [isGuru, setGuru] = useState<boolean>(false)
   const [isPhone, setPhone] = useState<boolean>(false)
   const [isPhoto, setPhoto] = useState<boolean>(false)
+  const [isCatatan, setCatatan] = useState<boolean>(false)
   const [isSubmit, setSubmit] = useState<boolean>(false)
 
   const [valueNama, setNamaValue] = useState<string>()
   const [valueKelas, setKelasValue] = useState<string>()
   const [valueBentuk, setBentukValue] = useState<string>()
   const [valueGuru, setGuruValue] = useState<string>()
-  const [valuePhone, setPhoneValue] = useState<string>()
+  const [valuePhone, setPhoneValue] = useState<number>()
+  const [valueCatatan, setCatatanValue] = useState<string>()
   const [photoFile, setPhotoFile] = useState<File>()
 
-  useEffect(() => {
-    axios.get("/api/reports")
-      .then(data => {
-        const fetched = data.data
-        console.log(fetched)
-      })
-  }, [])
+  useEffect(()=>{
+    axios.get<{status:boolean,data:ClassInterface[]}>("/api/classes")
+    .then(data=>{
+      const fetched = data.data
+      setClasses(fetched.data)
+    })
+  },[])
 
   const bentuk = [
     { id: 1, text: "Pengumpulan" },
@@ -57,6 +60,7 @@ const Form = () => {
 
   const handleClass = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setClass(e.target.value)
+    console.log(classId)
     if (e.target.value) {
       setKelasValue(e.target.value)
       console.log(e.target.value)
@@ -91,13 +95,28 @@ const Form = () => {
   }
 
   const handlePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value) {
-      setPhoneValue(e.target.value)
+    if (Number(e.target.value) <= 36) {
+      setPhoneValue(Number(e.target.value))
+      if (!isPhone) {
+        setPhone(true)
+      }
+    } else if (Number(e.target.value) > 36) {
+      setPhoneValue(36)
       if (!isPhone) {
         setPhone(true)
       }
     } else if (e.target.value == "") {
       setPhone(false)
+    }
+  }
+  const handleCatatan = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value) {
+      setCatatanValue(e.target.value)
+      if (!isCatatan) {
+        setCatatan(true)
+      }
+    } else if (e.target.value == "") {
+      setCatatan(false)
     }
   }
 
@@ -133,9 +152,14 @@ const Form = () => {
             formdata.append("student_class", valueKelas as string)
             formdata.append("report_type", valueBentuk as string)
             formdata.append("teacher", valueGuru as string)
-            formdata.append("phone", valuePhone)
+            formdata.append("phone", valuePhone.toString() as string)
             formdata.append("image", result.link as string)
 
+            if (isCatatan) {
+
+              formdata.append("catatan", valueCatatan as string)
+
+            }
 
             axios.post("/api/reports", formdata)
               .then(data => {
@@ -167,8 +191,10 @@ const Form = () => {
       <main className=' flex flex-col gap-4 mt-8 w-[40dvw]'>
         <Fields label='Form Pengumpulan Gawai' isDisabled={true} icon='pencil-square' func={handleDummy} isTime={true} type='text' isDataSet={false} defaultValue={false} />
         <Fields label='Nama Petugas' isDisabled={false} icon='person-badge' func={handleNama} isTime={false} type='text' isDataSet={false} defaultValue={false} />
-        <FieldSelect label='Pilih Kelas' icon='grid-3x3-gap-fill' placeholder='Pilih Kelas' datas={dataClass as unknown as customObject[]} name="class"
+        {classes && (
+          <FieldSelect label='Pilih Kelas' icon='grid-3x3-gap-fill' placeholder='Pilih Kelas' datas={classes as unknown as customObject[]} name="class"
           func={handleClass} />
+        )}
         <FieldSelect label='Bentuk Laporan' icon='grid-3x3-gap-fill' placeholder='Opsi Laporan' datas={bentuk} name="report" func={handleType} />
         {type == "" && (
           <Fields label='Nama Guru' isDisabled={true} icon='person-badge' func={handleGuru} isTime={false} type='text' isDataSet={false} defaultValue={false} />
@@ -178,6 +204,9 @@ const Form = () => {
         )}
         {type == "Peminjaman" && (
           <Fields label='Nama Guru Penanggung Jawab' isDisabled={false} icon='person-badge' func={handleGuru} isTime={false} type='text' isDataSet={dataTeacher} defaultValue={false} />
+        )}
+        {type == "Peminjaman" && (
+          <Fields label='Catatan' isDisabled={false} icon='exclamation-circle' func={handleCatatan} isTime={false} type='text' isDataSet={false} defaultValue={false} />
         )}
         {type == "Pengambilan" && (
           <Fields label='Nama Guru Terakhir' isDisabled={false} icon='person-badge' func={handleGuru} isTime={false} type='text' isDataSet={dataTeacher} defaultValue={false} />
@@ -206,10 +235,8 @@ const Form = () => {
           <button type="button" className=' bg-green-600 text-neutral-100 rounded-xl p-2 px-4 disabled:opacity-75 transition-all duration-500 disabled:cursor-wait 
           hover:opacity-75' disabled={true} onClick={() => handleSubmit()}>
             <span>Tunggu sebentar...</span>
-            {/* <i className="bi bi-cloud-upload-fill mx-2"></i> */}
           </button>
         )}
-        {/* <img src={valuePhoto} alt="" /> */}
       </section>
     </section>
   )

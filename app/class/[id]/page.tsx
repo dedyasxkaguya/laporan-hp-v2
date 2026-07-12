@@ -232,7 +232,7 @@ const Page = () => {
                             <button type="button" className=' p-2 px-4 border border-green-800 text-green-800 bg-green-100 rounded-xl shadow transition-all 
                         duration-500 font-semibold cursor-pointer hover:opacity-60 text-xs lg:text-base'
                                 onClick={() => handleExport(student_class.reports, student_class?.uuid)}>
-                                <span>Import To Excel</span>
+                                <span>Export</span>
                                 <i className=' bi bi-file-earmark-spreadsheet-fill mx-2'></i>
                             </button>
                         )}

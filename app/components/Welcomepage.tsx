@@ -7,8 +7,8 @@ const Welcomepage = ({ func }: { func: () => void }) => {
         setLoad(true)
     }, 2120);
     useEffect(() => {
-        let timer = 50
-        const duration = 50
+        let timer = 2
+        const duration = 2
         const interv = setInterval(() => {
             if (timer > 0) {
                 timer -= 1
