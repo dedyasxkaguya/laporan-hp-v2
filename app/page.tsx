@@ -9,6 +9,7 @@ import { checkDevice } from './components/check'
 import Forbidden from './components/Error/Forbidden'
 import Lenis from 'lenis'
 import Welcomepage from './components/Welcomepage'
+import DynamicIsland from './components/DynamicIsland'
 const Page = () => {
   const [isWelcome, setWelcome] = useState<boolean>(true)
   const [isAndroid, setCheckOS] = useState<boolean>()
@@ -51,10 +52,11 @@ const Page = () => {
           <Welcomepage func={handleWelcome}/>
         )}
         <section className=' w-dvw flex items-center justify-center'>
-          <Navbar isGlass={scroll > .1 ? true : false} />
+          {/* <Navbar isGlass={scroll > .1 ? true : false} /> */}
+          <DynamicIsland isHome data={null}/>
         </section>
         <main className=' rounded-4xl shadow-2xl min-h-[80dvh] w-[64dvw] mx-auto '
-          style={{ marginTop: "16dvh", marginBottom: "8dvh" }}>
+          style={{ marginTop: "8dvh", marginBottom: "8dvh" }}>
           <section className=' p-8'>
             <Hero />
             <Form />

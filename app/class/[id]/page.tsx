@@ -11,6 +11,7 @@ import * as XLSX from "xlsx"
 import { checkDevice } from '@/app/components/check';
 import Forbidden from '@/app/components/Error/Forbidden';
 import Lenis from 'lenis';
+import DynamicIsland from '@/app/components/DynamicIsland';
 
 export interface Data {
     status: boolean;
@@ -166,8 +167,13 @@ const Page = () => {
     } else {
         return (
             <>
-                <Navbar isGlass={scroll > .1 ? true : false} />
-                <main className=' shadow border border-neutral-200 mt-8 mx-auto mb-[16dvh] p-4 rounded-3xl lg:p-6 w-[96dvw] lg:w-fit' style={{ marginTop: "16dvh" }}>
+                {/* <Navbar isGlass={scroll > .1 ? true : false} /> */}
+                <div className=" w-dvw h-fit flex justify-center items-center">
+                    {student_class && (
+                        <DynamicIsland isHome={false} data={student_class}/>
+                    )}
+                </div>
+                <main className=' shadow border border-neutral-200 mt-8 mx-auto mb-[16dvh] p-4 rounded-3xl lg:p-6 w-[96dvw] lg:w-fit'>
                     <section className=' flex justify-between items-center text-xs lg:text-base'>
                         <div className=" p-2 px-4 rounded-xl bg-neutral-200 text-neutral-800 font-sans w-fit"
                             style={{ backgroundColor: student_class?.colors.subtle_color, color: student_class?.colors.primary_color }}>
@@ -202,15 +208,12 @@ const Page = () => {
                         </div>
                         <div className=" flex gap-2 mb-2 flex-wrap">
                             <div className=" p-2 rounded-lg bg-blue-50 text-blue-600 shadow text-xs lg:text-base">
-                                <span className=' hidden lg:inline'>Laporan</span>
                                 <span>Pengumpulan : {collect}</span>
                             </div>
                             <div className=" p-2 rounded-lg bg-amber-50 text-amber-600 shadow text-xs lg:text-base">
-                                <span className=' hidden lg:inline'>Laporan</span>
                                 <span>Peminjaman : {borrow}</span>
                             </div>
                             <div className=" p-2 rounded-lg bg-green-50 text-green-600 shadow text-xs lg:text-base">
-                                <span className=' hidden lg:inline'>Laporan</span>
                                 <span>Pengambilan : {take}</span>
                             </div>
                         </div>

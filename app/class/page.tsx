@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import { checkDevice } from '../components/check';
 import Forbidden from '../components/Error/Forbidden';
 import Lenis from 'lenis';
+import DynamicIsland from '../components/DynamicIsland';
 export interface Data {
     _id: string;
     grade: Grade;
@@ -117,8 +118,9 @@ const Page = () => {
 
         return (
             <>
-                <Navbar isGlass={scroll > .1 ? true : false} />
-                <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop: "16dvh", marginBottom:"24dvh" }}>
+                {/* <Navbar isGlass={scroll > .1 ? true : false} /> */}
+                <DynamicIsland isHome={false} data={null} />
+                <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop: "16dvh", marginBottom: "24dvh" }}>
                     <section className=' flex justify-between items-start lg:items-center flex-col lg:flex-row gap-2 '>
                         <div className=" p-2 px-4 rounded-xl bg-blue-200 text-blue-600 font-sans w-fit text-xs lg:text-base">
                             Daftar Kelas SMKN 1 Jakarta

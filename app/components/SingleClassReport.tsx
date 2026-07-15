@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import ChartElement from './ChartElement';
 import Statusbox from './Statusbox'
 import ImageModal from './ImageModal';
+import NoteModal from './noteModal';
 
 export interface ISingleClassReport {
     data: DataClass
@@ -63,6 +64,11 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
         setType(type)
         handleShow()
     }
+    window.addEventListener("keydown",(e:KeyboardEvent)=>{
+        if(e.key == "Escape"){
+            setShow(false)
+        }
+    })
     return (
         <main>
             <table className=' table border-collapse border-spacing-2'>
@@ -79,7 +85,7 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                         return (
                             <tr key={index}>
                                 <td className='border border-neutral-200 border-r-0 border-l-0 capitalize p-2 lg:p-4 text-xs lg:text-base'>
-                                    {a.name}
+                                    <span>{a.name}</span>
                                 </td>
                                 <td className='border border-neutral-200 border-r-0 border-l-0 font-semibold p-2 lg:p-4 text-xs lg:text-base'>
                                     {a.teacher}
@@ -132,8 +138,11 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                 </section>
             </section>
             {photo && show && name && type && (
-                <ImageModal src={photo} func={() => handleShow()} name={name} type={type} colors={data.colors} uuid={data.uuid} />
+                <>
+                    <ImageModal src={photo} func={() => handleShow()} name={name} type={type} colors={data.colors} uuid={data.uuid} />
+                </>
             )}
+            {/* <NoteModal func={()=>handleShow()} name={"Dedyas"} colors={data.colors} uuid={data.uuid}/>/ */}
         </main>
     )
 }
