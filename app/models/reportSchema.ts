@@ -6,7 +6,8 @@ export interface IReport extends Document {
   report_type: string;
   teacher: string;
   phone: number;
-  image:string;
+  image: string;
+  note: string;
 }
 
 const ReportSchema = new mongoose.Schema<IReport>(
@@ -17,6 +18,7 @@ const ReportSchema = new mongoose.Schema<IReport>(
     teacher: { type: String, required: true },
     phone: { type: Number, required: true },
     image: { type: String, required: true },
+    note: { type: String, required: false },
   },
   { timestamps: true },
 );

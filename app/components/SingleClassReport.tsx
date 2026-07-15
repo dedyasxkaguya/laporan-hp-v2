@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import ChartElement from './ChartElement';
 import Statusbox from './Statusbox'
 import ImageModal from './ImageModal';
+import NoteModal from './noteModal';
 
 export interface ISingleClassReport {
     data: DataClass
@@ -57,48 +58,53 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
         setShow(!show)
     }
 
-    const handlePhoto = (img: string,name: string,type: string) => {
+    const handlePhoto = (img: string, name: string, type: string) => {
         setPhoto(img)
         setName(name)
         setType(type)
         handleShow()
     }
+    window.addEventListener("keydown",(e:KeyboardEvent)=>{
+        if(e.key == "Escape"){
+            setShow(false)
+        }
+    })
     return (
         <main>
             <table className=' table border-collapse border-spacing-2'>
                 <tbody>
                     <tr>
-                        <td className=' text-neutral-400 p-4 text-xl font-mono'>Petugas</td>
-                        <td className=' text-neutral-400 p-4 text-xl font-mono'>Nama Guru</td>
-                        <td className=' text-neutral-400 p-4 text-xl font-mono'>Tanggal</td>
-                        <td className=' text-neutral-400 p-4 text-xl font-mono'>Jumlah Handphone</td>
-                        <td className=' text-neutral-400 p-4 text-xl font-mono'>Status</td>
-                        <td className=' text-neutral-400 p-4 text-xl font-mono'>Foto</td>
+                        <td className=' text-neutral-400 font-mono text-base lg:text-xl p-2 lg:p-4'>Petugas</td>
+                        <td className=' text-neutral-400 font-mono text-base lg:text-xl p-2 lg:p-4'>Nama Guru</td>
+                        <td className=' text-neutral-400 font-mono text-base lg:text-xl hidden lg:table-cell p-2 lg:p-4'>Tanggal</td>
+                        <td className=' text-neutral-400 font-mono text-base lg:text-xl hidden lg:table-cell p-2 lg:p-4'>Jumlah Handphone</td>
+                        <td className=' text-neutral-400 font-mono text-base lg:text-xl p-2 lg:p-4'>Status</td>
+                        <td className=' text-neutral-400 font-mono text-base lg:text-xl hidden lg:table-cell p-2 lg:p-4'>Foto</td>
                     </tr>
                     {toLatestList.map((a, index) => {
                         return (
                             <tr key={index}>
-                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4 capitalize'>
-                                    {a.name}
+                                <td className='border border-neutral-200 border-r-0 border-l-0 capitalize p-2 lg:p-4 text-xs lg:text-base'>
+                                    <span>{a.name}</span>
                                 </td>
-                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4 font-semibold'>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 font-semibold p-2 lg:p-4 text-xs lg:text-base'>
                                     {a.teacher}
                                 </td>
-                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4 text-neutral-400'>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 text-neutral-400 hidden lg:table-cell p-2 lg:p-4 text-xs lg:text-base'>
                                     {a ? new Date(a?.createdAt).toLocaleDateString("id-ID", {
                                         dateStyle: "full"
                                     }) : "-"}
                                 </td>
-                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4 text-center'>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 text-center hidden lg:table-cell p-2 lg:p-4 text-xs lg:text-base'>
                                     {a.phone} <span className=' text-neutral-400'>/ 36 ({((a.phone / 36) * 100).toFixed(1)}%)</span>
                                 </td>
-                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4 text-xs lg:text-base'>
                                     <Statusbox tipe={a.report_type} />
                                 </td>
-                                <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 hidden lg:table-cell p-2 lg:p-4 text-xs lg:text-base'>
                                     {a.image && (
                                         <img src={a.image} alt="" className=' h-16 rounded-xl m-2 shadow'
-                                            onClick={() => handlePhoto(a.image , a.name , a.report_type)} />
+                                            onClick={() => handlePhoto(a.image, a.name, a.report_type)} />
                                     )}
                                     {!a.image && (
                                         <img src={"https://placehold.co/600x400?text=Tidak+Ada+Foto"} alt="" className=' h-16 rounded-xl m-2 shadow' />
@@ -109,14 +115,14 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                     })}
                 </tbody>
             </table>
-            <section className=' mt-4'>
+            <section className=' mt-4 p-2'>
                 <div className="">
-                    <p className=' text-2xl font-semibold font-mono'>
+                    <p className=' font-semibold font-mono text-base lg:text-2xl'>
                         <span>Diagram Laporan Gawai</span>
                         <span style={{ color: data?.colors.primary_color }}> {data?.uuid}</span>
                     </p>
-                    <div className="">
-                        <label htmlFor="">Menunjukkan {len} data laporan</label><br />
+                    <div className=" text-xs lg:text-base">
+                        <label htmlFor="" className=' text-neutral-400'>Menunjukkan {len} data laporan</label><br />
                         <select name="" id="" onChange={(e) => handleLen(e)} className=' p-1 px-2 pe-4 rounded-lg border my-2'>
                             <option value="default" defaultValue={"default"} hidden>Pilih Jangkauan Data</option>
                             <option value={5}>5 Laporan</option>
@@ -127,11 +133,16 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                         </select>
                     </div>
                 </div>
-                <ChartElement latestData={toLatestList} length={len} kelas={data.uuid} />
+                <section>
+                    <ChartElement latestData={toLatestList} length={len} kelas={data.uuid} />
+                </section>
             </section>
             {photo && show && name && type && (
-                <ImageModal src={photo} func={()=>handleShow()} name={name} type={type} colors={data.colors} uuid={data.uuid}/>
+                <>
+                    <ImageModal src={photo} func={() => handleShow()} name={name} type={type} colors={data.colors} uuid={data.uuid} />
+                </>
             )}
+            {/* <NoteModal func={()=>handleShow()} name={"Dedyas"} colors={data.colors} uuid={data.uuid}/>/ */}
         </main>
     )
 }

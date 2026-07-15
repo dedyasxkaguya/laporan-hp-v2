@@ -53,7 +53,7 @@ const FieldSelect = ({ label, icon, placeholder, datas, name, func }: IFieldProp
                 {name == "class" && (
                     datas.map((a, index) => {
                         return (
-                            <option value={a.id} key={index}>{a.grade} {a.name}</option>
+                            <option value={a._id} key={index}>{a.grade} {a.name}</option>
                         )
                     })
                 )}

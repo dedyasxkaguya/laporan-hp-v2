@@ -1,13 +1,14 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-import Classreport from '../components/Classreport';
+import Classreport from '../../../components/Classreport';
 import axios from 'axios';
-import Navbar from '../components/Navbar';
-import { checkDevice } from '../components/check';
-import Forbidden from '../components/Error/Forbidden';
+import Navbar from '../../../components/Navbar';
+import { checkDevice } from '../../../components/check';
+import Forbidden from '../../../components/Error/Forbidden';
 import Lenis from 'lenis';
-import DynamicIsland from '../components/DynamicIsland';
+import { useParams } from 'next/navigation';
+import { checkAdmin } from '@/app/lib/checkAdmin';
 export interface Data {
     _id: string;
     grade: Grade;
@@ -51,14 +52,18 @@ export enum Vocation {
 
 
 const Page = () => {
+    const [isAdmin,setAdmin] = useState<boolean>(false)
     const [isAndroid, setCheckOS] = useState<boolean>(false)
     const [scroll, setScroll] = useState<number>(0)
     const [time, timeSet] = useState<string>()
     const [date, dateSet] = useState<string>()
     const [data, setData] = useState<Data[]>()
     const [valid, setValid] = useState<number>()
+    const params = useParams()
+    const {password} = params
 
     const updateTime = () => {
+
         const d = new Date()
         const time = d.toLocaleDateString("id-ID", {
             hour: "2-digit",
@@ -73,11 +78,17 @@ const Page = () => {
         dateSet(date)
     }
     useEffect(() => {
+        const verify = async () => {
+            if(password){
+                setAdmin(await checkAdmin(password.toString()))
+            }
+        }
+        verify()
         const lenis = new Lenis({
             autoRaf: true,
             lerp: 0.1,
             smoothWheel: true,
-            duration: 1.5
+            duration: 1.5,
         })
         lenis.start()
         lenis.on("scroll", (e) => {
@@ -110,7 +121,7 @@ const Page = () => {
     setInterval(() => {
         updateTime()
     }, 1000);
-    if (isAndroid) {
+    if (!isAndroid || !isAdmin) {
         return (
             <Forbidden />
         )
@@ -118,9 +129,8 @@ const Page = () => {
 
         return (
             <>
-                {/* <Navbar isGlass={scroll > .1 ? true : false} /> */}
-                <DynamicIsland isHome={false} data={null} />
-                <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop: "16dvh", marginBottom: "24dvh" }}>
+                <Navbar isGlass={scroll > .1 ? true : false} />
+                <main className=' p-4 rounded-3xl w-fit shadow border border-neutral-200 my-8 mx-auto' style={{ marginTop: "16dvh" }}>
                     <section className=' flex justify-between items-start lg:items-center flex-col lg:flex-row gap-2 '>
                         <div className=" p-2 px-4 rounded-xl bg-blue-200 text-blue-600 font-sans w-fit text-xs lg:text-base">
                             Daftar Kelas SMKN 1 Jakarta
@@ -158,7 +168,7 @@ const Page = () => {
                             </div>
                         )}
                         <hr className=' text-neutral-400' />
-                        <Classreport />
+                        <Classreport isAdmin={true} />
                     </section>
                 </main>
             </>

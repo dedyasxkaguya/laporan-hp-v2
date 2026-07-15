@@ -50,7 +50,7 @@ export enum Vocation {
     Informatika = "INFORMATIKA",
 }
 
-const Classreport = () => {
+const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
     const [data, setData] = useState<Datum[]>()
     useEffect(() => {
         axios.get<Data>("/api/classes")
@@ -77,51 +77,87 @@ const Classreport = () => {
         <main>
             <section></section>
             <section>
-                <p className=' text-2xl font-semibold font-mono'>Laporan Gawai</p>
+                <p className=' font-semibold font-mono text-lg lg:text-2xl'>Laporan Gawai</p>
                 <table className=' table border-collapse border-spacing-2'>
                     <tbody>
                         <tr>
-                            <td className=' text-neutral-400 p-4 text-xl font-mono'>Kelas</td>
-                            <td className=' text-neutral-400 p-4 text-xl font-mono'>Wali Kelas</td>
-                            <td className=' text-neutral-400 p-4 text-xl font-mono'>Guru</td>
-                            <td className=' text-neutral-400 p-4 text-xl font-mono'>Status</td>
-                            <td className=' text-neutral-400 p-4 text-xl font-mono'>Petugas</td>
-                            <td className=' text-neutral-400 p-4 text-xl font-mono'>Tanggal</td>
+                            <td className=' text-neutral-400 font-mono text-sm lg:text-lg p-2 lg:p-4'>Kelas</td>
+                            <td className=' text-neutral-400 font-mono text-sm lg:text-lg hidden lg:table-cell p-2 lg:p-4'>Wali Kelas</td>
+                            <td className=' text-neutral-400 font-mono text-sm lg:text-lg hidden lg:table-cell p-2 lg:p-4'>Guru</td>
+                            <td className=' text-neutral-400 font-mono text-sm lg:text-lg p-2 lg:p-4'>Status</td>
+                            <td className=' text-neutral-400 font-mono text-sm lg:text-lg p-2 lg:p-4'>Petugas</td>
+                            <td className=' text-neutral-400 font-mono text-sm lg:text-lg hidden lg:table-cell p-2 lg:p-4'>Tanggal</td>
                         </tr>
+                        {!data && (
+                            <tr className='  text-xs lg:text-base'>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4'>
+                                    <Link href={'/class/'} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60 bg-neutral-400 text-neutral-400">
+                                        X-RPL
+                                    </Link>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 font-semibold hidden lg:table-cell p-2 lg:p-4'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        Alzaro Rashad Prakas
+                                    </div>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 hidden lg:table-cell p-2 lg:p-4'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        <span>Tidak ada</span>
+                                    </div>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        <span>Tidak ada</span>
+                                    </div>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 capitalize truncate p-2 lg:p-4'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        syeera dan callylaa
+                                    </div>
+                                </td>
+                                <td className='border border-neutral-200 border-r-0 border-l-0 hidden lg:table-cell p-2 lg:p-4'>
+                                    <div className="text-neutral-400 bg-neutral-400 p-2 px-4 rounded-xl">
+                                        Senin, 11 Mei 2026
+                                    </div>
+                                </td>
+                            </tr>
+                        )}
                         {data?.map((a, index) => {
                             return (
-                                <tr key={index}>
-                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
-                                        <Link href={'/class/' + a._id} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60" 
-                                        style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
-                                            {a.grade} {a.name}
-                                        </Link>
+                                <tr key={index} className=' text-xs lg:text-base'>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4'>
+                                        {isAdmin && (
+                                            <Link href={`/class/${a._id}/password`} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60"
+                                                style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
+                                                {a.grade} {a.name}
+                                            </Link>
+                                        )}
+                                        {!isAdmin && (
+                                            <Link href={'/class/' + a._id} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60"
+                                                style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
+                                                {a.grade} {a.name}
+                                            </Link>
+                                        )}
                                     </td>
-                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4 font-semibold'>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 font-semibold hidden lg:table-cell p-2 lg:p-4'>
                                         {a.teacher_name}
                                     </td>
-                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
-                                        {a.last_report 
-                                            ? <p>{a.teacher_name}</p>
-                                            : <div className=" text-red-600">
-                                                <i className="bi bi-exclamation-circle me-2"></i>
-                                                <span>Tidak ada</span>
-                                            </div>
-                                        }
-                                    </td>
-                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4'>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 hidden lg:table-cell p-2 lg:p-4'>
                                         {a.last_report
-                                            ? <Statusbox tipe={a.last_report.report_type} />
+                                            ? <p>{a.last_report.teacher}</p>
                                             : <div className=" text-red-600">
                                                 <i className="bi bi-exclamation-circle me-2"></i>
                                                 <span>Tidak ada</span>
                                             </div>
                                         }
                                     </td>
-                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4 capitalize'>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4'>
+                                        <Statusbox tipe={a.last_report?.report_type} />
+                                    </td>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 capitalize max-w-[48dvw] lg:max-w-fit truncate p-2 lg:p-4'>
                                         {a.last_report ? a.last_report.name : "-"}
                                     </td>
-                                    <td className='border border-neutral-200 border-r-0 border-l-0 p-4 text-neutral-400'>
+                                    <td className='border border-neutral-200 border-r-0 border-l-0 text-neutral-400 hidden lg:table-cell p-2 lg:p-4'>
                                         {a.last_report ? new Date(a.last_report?.createdAt).toLocaleDateString("id-ID", {
                                             dateStyle: "full"
                                         }) : "-"}

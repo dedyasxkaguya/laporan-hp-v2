@@ -12,7 +12,7 @@
 
 # testing
 /coverage
-
+/.VSCoddeCounter/
 # next.js
 /.next/
 /out/

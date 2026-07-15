@@ -1,0 +1,104 @@
+Date : 2026-05-17 19:37:50
+Directory : /media/dedyas/New Volume/Projects/pengumpulan-hp
+Total : 49 files,  10229 codes, 15 comments, 218 blanks, all 10462 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          5 |      7,946 |          0 |          3 |      7,949 |
+| TypeScript JSX     |         19 |      1,937 |         11 |        153 |      2,101 |
+| TypeScript         |         13 |        232 |          0 |         37 |        269 |
+| JSON with Comments |          1 |         34 |          0 |          1 |         35 |
+| Markdown           |          2 |         25 |          2 |         16 |         43 |
+| JavaScript         |          2 |         20 |          2 |          5 |         27 |
+| PostCSS            |          1 |         20 |          0 |          2 |         22 |
+| XML                |          6 |         15 |          0 |          1 |         16 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                  | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                     |         49 |     10,229 |         15 |        218 |     10,462 |
+| . (Files)                                                                             |          8 |      7,354 |          4 |         28 |      7,386 |
+| app                                                                                   |         35 |      2,860 |         11 |        189 |      3,060 |
+| app (Files)                                                                           |          3 |        108 |          0 |          8 |        116 |
+| app/api                                                                               |          8 |        822 |          0 |         15 |        837 |
+| app/api (Files)                                                                       |          1 |          4 |          0 |          1 |          5 |
+| app/api/classes                                                                       |          2 |         78 |          0 |          7 |         85 |
+| app/api/classes (Files)                                                               |          1 |         66 |          0 |          6 |         72 |
+| app/api/classes/[id]                                                                  |          1 |         12 |          0 |          1 |         13 |
+| app/api/json                                                                          |          3 |        678 |          0 |          1 |        679 |
+| app/api/reports                                                                       |          1 |         43 |          0 |          4 |         47 |
+| app/api/upload                                                                        |          1 |         19 |          0 |          2 |         21 |
+| app/class                                                                             |          4 |        774 |          2 |         50 |        826 |
+| app/class (Files)                                                                     |          1 |        156 |          0 |         12 |        168 |
+| app/class/[id]                                                                        |          2 |        462 |          2 |         26 |        490 |
+| app/class/[id] (Files)                                                                |          1 |        231 |          1 |         13 |        245 |
+| app/class/[id]/password                                                               |          1 |        231 |          1 |         13 |        245 |
+| app/class/admin                                                                       |          1 |        156 |          0 |         12 |        168 |
+| app/class/admin/password                                                              |          1 |        156 |          0 |         12 |        168 |
+| app/components                                                                        |         14 |      1,081 |          9 |         98 |      1,188 |
+| app/components (Files)                                                                |         13 |      1,056 |          9 |         96 |      1,161 |
+| app/components/Error                                                                  |          1 |         25 |          0 |          2 |         27 |
+| app/lib                                                                               |          3 |         34 |          0 |          7 |         41 |
+| app/models                                                                            |          3 |         41 |          0 |         11 |         52 |
+| public                                                                                |          6 |         15 |          0 |          1 |         16 |
++---------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                              | language           | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/AGENTS.md                            | Markdown           |          2 |          2 |          2 |          6 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/README.md                            | Markdown           |         23 |          0 |         14 |         37 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/classes/[id]/route.ts        | TypeScript         |         12 |          0 |          1 |         13 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/classes/route.ts             | TypeScript         |         66 |          0 |          6 |         72 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/json/class.json              | JSON               |        152 |          0 |          0 |        152 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/json/report.json             | JSON               |         14 |          0 |          1 |         15 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/json/teacher.json            | JSON               |        512 |          0 |          0 |        512 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/reports/route.ts             | TypeScript         |         43 |          0 |          4 |         47 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/route.ts                     | TypeScript         |          4 |          0 |          1 |          5 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/api/upload/route.ts              | TypeScript         |         19 |          0 |          2 |         21 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/class/[id]/page.tsx              | TypeScript JSX     |        231 |          1 |         13 |        245 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/class/[id]/password/page.tsx     | TypeScript JSX     |        231 |          1 |         13 |        245 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/class/admin/password/page.tsx    | TypeScript JSX     |        156 |          0 |         12 |        168 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/class/page.tsx                   | TypeScript JSX     |        156 |          0 |         12 |        168 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Camera.tsx            | TypeScript JSX     |         90 |          5 |          7 |        102 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/ChartElement.tsx      | TypeScript JSX     |        134 |          1 |         16 |        151 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Classdetail.tsx       | TypeScript JSX     |         53 |          0 |          6 |         59 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Classreport.tsx       | TypeScript JSX     |        167 |          0 |          8 |        175 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Error/Forbidden.tsx   | TypeScript JSX     |         25 |          0 |          2 |         27 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/FieldSelect.tsx       | TypeScript JSX     |         65 |          1 |          7 |         73 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Fields.tsx            | TypeScript JSX     |        101 |          0 |          5 |        106 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Form.tsx              | TypeScript JSX     |        189 |          2 |         27 |        218 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Hero.tsx              | TypeScript JSX     |         14 |          0 |          2 |         16 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/ImageModal.tsx        | TypeScript JSX     |         45 |          0 |          3 |         48 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Navbar.tsx            | TypeScript JSX     |         38 |          0 |          2 |         40 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/SingleClassReport.tsx | TypeScript JSX     |        130 |          0 |         11 |        141 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/Statusbox.tsx         | TypeScript JSX     |         24 |          0 |          1 |         25 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/components/check.ts              | TypeScript         |          6 |          0 |          1 |          7 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/globals.css                      | PostCSS            |         20 |          0 |          2 |         22 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/layout.tsx                       | TypeScript JSX     |         31 |          0 |          5 |         36 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/lib/cloudinary.ts                | TypeScript         |          7 |          0 |          2 |          9 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/lib/connectMongo.ts              | TypeScript         |         10 |          0 |          2 |         12 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/lib/uploadIimage.ts              | TypeScript         |         17 |          0 |          3 |         20 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/models/classSchema.ts            | TypeScript         |         11 |          0 |          3 |         14 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/models/reportSchema.ts           | TypeScript         |         23 |          0 |          5 |         28 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/models/testSchema.ts             | TypeScript         |          7 |          0 |          3 |         10 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/app/page.tsx                         | TypeScript JSX     |         57 |          0 |          1 |         58 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/eslint.config.mjs                    | JavaScript         |         14 |          2 |          3 |         19 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/next.config.ts                       | TypeScript         |          7 |          0 |          4 |         11 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/package-lock.json                    | JSON               |      7,229 |          0 |          1 |      7,230 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/package.json                         | JSON               |         39 |          0 |          1 |         40 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/postcss.config.mjs                   | JavaScript         |          6 |          0 |          2 |          8 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/public/file.svg                      | XML                |          1 |          0 |          0 |          1 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/public/globe.svg                     | XML                |          1 |          0 |          0 |          1 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/public/next.svg                      | XML                |          1 |          0 |          0 |          1 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/public/smk.svg                       | XML                |         10 |          0 |          1 |         11 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/public/vercel.svg                    | XML                |          1 |          0 |          0 |          1 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/public/window.svg                    | XML                |          1 |          0 |          0 |          1 |
+| /media/dedyas/New Volume/Projects/pengumpulan-hp/tsconfig.json                        | JSON with Comments |         34 |          0 |          1 |         35 |
+| Total                                                                                 |                    |     10,229 |         15 |        218 |     10,462 |
++---------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

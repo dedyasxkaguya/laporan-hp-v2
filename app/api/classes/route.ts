@@ -34,6 +34,7 @@ export interface IReport {
 
 export async function GET() {
   try {
+    connectMongo()
     const data = await Class.find().lean()
     const classData:Data[] = []
     for(const a of data){
