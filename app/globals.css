@@ -33,6 +33,9 @@ html {
 .fade-up {
   animation: animate-fade 2s cubic-bezier(0.47, 1.64, 0.41, 0.8);
 }
+.fade-left{
+  animation: blink 2s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+}
 @keyframes animate-fade {
   0% {
     transform: translateY(50dvh);

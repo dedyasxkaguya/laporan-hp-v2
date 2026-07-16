@@ -64,8 +64,8 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
         setType(type)
         handleShow()
     }
-    window.addEventListener("keydown",(e:KeyboardEvent)=>{
-        if(e.key == "Escape"){
+    window.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key == "Escape") {
             setShow(false)
         }
     })
@@ -91,9 +91,18 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                                     {a.teacher}
                                 </td>
                                 <td className='border border-neutral-200 border-r-0 border-l-0 text-neutral-400 hidden lg:table-cell p-2 lg:p-4 text-xs lg:text-base'>
-                                    {a ? new Date(a?.createdAt).toLocaleDateString("id-ID", {
-                                        dateStyle: "full"
-                                    }) : "-"}
+                                    <div className=" flex flex-col ">
+                                        <span>{a ? new Date(a?.createdAt).toLocaleDateString("id-ID", {
+                                            dateStyle: "full"
+                                        }) : "-"}
+                                        </span>
+                                        <span className=' text-[2px] lg:text-xs text-neutral-800'>{a ? new Date(a?.createdAt).toLocaleDateString("id-ID", {
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                            second: "2-digit",
+                                        }) : "-"}
+                                        </span>
+                                    </div>
                                 </td>
                                 <td className='border border-neutral-200 border-r-0 border-l-0 text-center hidden lg:table-cell p-2 lg:p-4 text-xs lg:text-base'>
                                     {a.phone} <span className=' text-neutral-400'>/ 36 ({((a.phone / 36) * 100).toFixed(1)}%)</span>
