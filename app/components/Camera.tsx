@@ -135,7 +135,7 @@ const Camera = ({ func, isSubmit, progress, submitfunc }: ICamera) => {
                             disabled={progress == 100 ? false : true}
                             onClick={() => {
                                 showSwal()
-                                // submitfunc()
+                                submitfunc()
                             }} ref={btnRef0}>
                             {click && (
                                 <span>Tunggu Sebentar ...</span>
