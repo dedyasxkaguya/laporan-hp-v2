@@ -24,7 +24,7 @@ const DynamicIsland = ({ isHome, data, progress }: DynamicIslanInterface) => {
     }
 
     const handleReset = () => {
-        navigation.reload()
+        window.location.reload()
     }
 
     return (
