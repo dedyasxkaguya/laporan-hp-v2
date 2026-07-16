@@ -46,7 +46,7 @@ const Audiocontrol = ({ src }: AudioInterface) => {
                         ? <i className="bi bi-pause-fill text-neutral-100"></i>
                         : <i className="bi bi-play-fill text-neutral-100"></i>}
                 </button>
-                <span>Love Epiphany</span>
+                <span>Just Some Song</span>
             </div>
             <div className=" w-full h-2 rounded-full border border-neutral-400 overflow-hidden">
                 <div className=" h-full bg-black" style={{ width: `${percentage}%` }}></div>

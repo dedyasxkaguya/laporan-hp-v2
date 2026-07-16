@@ -9,9 +9,10 @@ const Clock = dynamic(() => import("./Clock"), { ssr: false })
 export interface DynamicIslanInterface {
     isHome: boolean
     data: DataClass | null
+    progress?: number
 }
 
-const DynamicIsland = ({ isHome, data }: DynamicIslanInterface) => {
+const DynamicIsland = ({ isHome, data, progress }: DynamicIslanInterface) => {
     const audioRef = useRef<HTMLAudioElement>(null)
 
     const [open, setOpen] = useState<boolean>(false)
@@ -22,6 +23,10 @@ const DynamicIsland = ({ isHome, data }: DynamicIslanInterface) => {
         }
     }
 
+    const handleReset = () => {
+        window.location.reload()
+    }
+
     return (
         <nav
             id="liquid"
@@ -30,7 +35,9 @@ const DynamicIsland = ({ isHome, data }: DynamicIslanInterface) => {
                 shadow shadow-white border transition-[width,border-radius,padding] duration-500 ease-in-out will-change-[width,border-radius]transform-gpu
                 ${open
                     ? "w-[48dvw] rounded-[1.8rem] gap-4 p-4"
-                    : "w-[24dvw] rounded-[8rem] pb-2 active:scale-95"
+                    : isHome
+                        ? "w-[24dvw] pb-2 active:scale-95 rounded-4xl"
+                        : "w-[24dvw] pb-2 active:scale-95 rounded-[8rem]"
                 }`}
             onClick={toggleOpen} style={{ borderColor: data ? data.colors.subtle_color : isHome ? "#fff" : "#450A0A" }}>
 
@@ -99,33 +106,61 @@ const DynamicIsland = ({ isHome, data }: DynamicIslanInterface) => {
                                 <img src={albumImage.src} alt="" className="w-[4dvw] rounded-2xl" />
                             )}
                             <div className=" w-full">
-                                <audio src={"/loveephipany.mp3"} ref={audioRef} hidden autoPlay></audio>
                                 <Audiocontrol src="/loveephipany.mp3" />
                             </div>
                         </div>
-                        <div className=" flex flex-col justify-between h-full ">
+                        <div className=" flex flex-col justify-between h-full items-end gap-2">
                             <span className=" text-xs text-neutral-400">Dedy As @ XI-RPL</span>
+                            <div className=" flex gap-2">
+                                <Link href={'/'}
+                                    className={`p-2 px-4 rounded-xl border bg-neutral-50 border-neutral-200 hover:text-red-50 hover:bg-red-800 hover:border-neutral-400 
+                                        transition-all duration-300 flex items-center`}
+                                    onClick={() => handleReset()}>
+                                    <i className="bi bi-arrow-left-short"></i>
+                                </Link>
+                                <Link
+                                    href={"/"}
+                                    className={`p-2 px-4 rounded-xl border bg-neutral-50 border-neutral-200 hover:text-red-50 hover:bg-red-800 hover:border-neutral-400 
+                                    transition-all duration-300 flex items-center`}>
+                                    <span>Form</span>
+                                </Link>
+                            </div>
                         </div>
                     </section>
                 )}
                 {isHome && (
-                    <div className=" flex gap-2 justify-start">
-                        <Link href={''}
-                            className={`p-2 px-4 rounded-xl border bg-neutral-50 hover:text-blue-800 hover:bg-blue-50 border-blue-200 transition-all duration-300 flex items-center`}>
-                            <i className="bi bi-arrow-repeat"></i>
-                        </Link>
-                        <Link
-                            href={"/class"}
-                            className={`p-2 px-4 rounded-xl border bg-neutral-50 hover:text-blue-800 hover:bg-blue-50 border-blue-200 transition-all duration-300 flex items-center`}>
-                            <span>Class</span>
-                        </Link>
-                    </div>
+                    <section className=" justify-between flex w-full">
+                        <div className=" flex gap-2 justify-start">
+                            <Link href={''}
+                                className={`p-2 px-4 rounded-xl border bg-neutral-50 border-neutral-200 hover:text-blue-800 hover:bg-blue-50 hover:border-blue-200 
+                                    transition-all duration-300 flex items-center`}
+                                onClick={() => handleReset()}>
+                                <i className="bi bi-arrow-repeat"></i>
+                            </Link>
+                            <Link
+                                href="/class"
+                                className={`p-2 px-4 rounded-xl border bg-neutral-50 border-neutral-200 hover:text-blue-800 hover:bg-blue-50 hover:border-blue-200 
+                                transition-all duration-300 flex items-center`}>
+                                <span>Class</span>
+                            </Link>
+                        </div>
+                        <div className=" flex flex-col justify-between h-full ">
+                            <span className=" text-xs text-neutral-400">Form Pengumpulan Gawai</span>
+                        </div>
+                    </section>
                 )}
             </div>
-            <hr className={` mt-2 transition-all duration-500 bg-neutral-400 w-50
-                ${open
-                    ? " opacity-0 hidden"
-                    : " opacity-100 block"}`} />
+            {progress !== null && isHome && (
+                <div className=" h-2 rounded-full border border-neutral-200 overflow-hidden transition-all duration-500 my-2 w-full">
+                    <div className={` h-full ${progress == 100 ? "bg-green-600" : "bg-blue-600"} transition-all duration-500`} style={{ width: `${progress}%` }}></div>
+                </div>
+            )}
+            {!progress && !isHome && (
+                <hr className={` mt-2 transition-all duration-500 bg-neutral-400 w-50
+                    ${open
+                        ? " opacity-0 hidden"
+                        : " opacity-100 block"}`} />
+            )}
         </nav>
     )
 }
