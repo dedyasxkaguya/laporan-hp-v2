@@ -6,13 +6,15 @@ import dataTeacher from '../api/json/teacher.json'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { ClassInterface } from '../lib/studentclass'
+export interface FormI {
+  func: (a: number) => void
+}
 
-
-const Form = () => {
+const Form = ({ func }: FormI) => {
 
   const [type, setType] = useState<string>("")
   const [classId, setClass] = useState<string>()
-  const [classes, setClasses] = useState<ClassInterface[]>()
+  const [classes, setClasses] = useState<ClassInterface[] | null>(null)
 
   const [isNama, setNama] = useState<boolean>(false)
   const [isKelas, setKelas] = useState<boolean>(false)
@@ -31,20 +33,27 @@ const Form = () => {
   const [valueCatatan, setCatatanValue] = useState<string>()
   const [photoFile, setPhotoFile] = useState<File>()
 
-  useEffect(()=>{
-    axios.get<{status:boolean,data:ClassInterface[]}>("/api/classes")
-    .then(data=>{
-      const fetched = data.data
-      setClasses(fetched.data)
-    })
-  },[])
+  const progress = [isNama, isKelas, isGuru, isPhone, isPhoto].filter(Boolean).length * 20;
+
+  useEffect(() => {
+    axios.get<{ status: boolean, data: ClassInterface[] }>("/api/classes")
+      .then(data => {
+        const fetched = data.data
+        console.log(fetched.data)
+        if (!classes) {
+          setClasses(fetched.data)
+        }
+      })
+
+    func(progress)
+
+  }, [progress])
 
   const bentuk = [
     { id: 1, text: "Pengumpulan" },
     { id: 2, text: "Peminjaman" },
     { id: 3, text: "Pengambilan" },
   ]
-  const progress = [isNama, isKelas, isGuru, isPhone, isPhoto].filter(Boolean).length * 20;
 
   const handleType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setType(e.target.value)
@@ -133,6 +142,15 @@ const Form = () => {
 
   const handleSubmit = () => {
 
+    Swal.fire({
+      icon:"info",
+      title:"test",
+      toast:true,
+      showConfirmButton:false,
+      timer:3000,
+      timerProgressBar:true
+    })
+
     setSubmit(true)
     const formdata = new FormData()
     const formdataImg = new FormData()
@@ -193,7 +211,7 @@ const Form = () => {
         <Fields label='Nama Petugas' isDisabled={false} icon='person-badge' func={handleNama} isTime={false} type='text' isDataSet={false} defaultValue={false} />
         {classes && (
           <FieldSelect label='Pilih Kelas' icon='grid-3x3-gap-fill' placeholder='Pilih Kelas' datas={classes as unknown as customObject[]} name="class"
-          func={handleClass} />
+            func={handleClass} />
         )}
         <FieldSelect label='Bentuk Laporan' icon='grid-3x3-gap-fill' placeholder='Opsi Laporan' datas={bentuk} name="report" func={handleType} />
         {type == "" && (
@@ -214,17 +232,17 @@ const Form = () => {
 
         <Fields label='Jumlah Handphone' isDisabled={false} icon='phone' func={handlePhone} isTime={false} type='number' isDataSet={false} defaultValue={false} />
 
-        <section className=' flex flex-col gap-4 '>
+        {/* <section className=' flex flex-col gap-4 '>
           <p className=' text-neutral-400'>Progress</p>
           <div className={`rounded-2xl w-full overflow-hidden border ${progress == 100 ? "border-green-600" : "border-blue-600"}`}>
             <div className={` p-2 ${progress == 100 ? "bg-green-600 border-green-600" : "bg-blue-600 border-blue-600"} border transition-all duration-500 text-center 
               text-neutral-50 ${progress > 1 ? "opacity-100" : "opacity-0"}`} style={{ width: `${progress}%` }}>{progress}%</div>
           </div>
-        </section>
+        </section> */}
       </main>
       <section className=' flex flex-col gap-4'>
-        <Camera func={handleCamera} />
-        {!isSubmit && (
+        <Camera func={handleCamera} isSubmit={isSubmit} progress={progress} submitfunc={handleSubmit}/>
+        {/* {!isSubmit && (
           <button type="button" className=' bg-green-600 text-neutral-100 rounded-xl p-2 px-4 disabled:opacity-75 transition-all duration-500 disabled:cursor-not-allowed 
           hover:opacity-75' disabled={progress == 100 ? false : true} onClick={() => handleSubmit()}>
             <span>Kirim Laporan</span>
@@ -236,7 +254,7 @@ const Form = () => {
           hover:opacity-75' disabled={true} onClick={() => handleSubmit()}>
             <span>Tunggu sebentar...</span>
           </button>
-        )}
+        )} */}
       </section>
     </section>
   )
