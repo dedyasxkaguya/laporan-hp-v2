@@ -48,6 +48,7 @@ export interface Report {
     updatedAt: Date;
     __v: number;
     image: string
+    note:string | null
 }
 
 

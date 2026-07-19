@@ -18,9 +18,7 @@ const DynamicIsland = ({ isHome, data, progress }: DynamicIslanInterface) => {
     const [open, setOpen] = useState<boolean>(false)
 
     const toggleOpen = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (e.currentTarget.id) {
-            setOpen(prev => !prev)
-        }
+        setOpen(prev => !prev)
     }
 
     const handleReset = () => {
@@ -151,7 +149,10 @@ const DynamicIsland = ({ isHome, data, progress }: DynamicIslanInterface) => {
                 )}
             </div>
             {progress !== null && isHome && (
-                <div className={` h-2 rounded-full border border-neutral-200 overflow-hidden transition-all duration-500 ${open ? "mb-2k" : "my-2"} w-full`}>
+                <div className={` h-2 rounded-full border border-neutral-200 overflow-hidden transition-all duration-500 ${open ? "mb-2k" : "my-2"} w-full
+                ${progress! > 0
+                        ? " block"
+                        : " hidden"}`}>
                     <div className={` h-full ${progress == 100 ? "bg-green-600" : "bg-blue-600"} transition-all duration-500`} style={{ width: `${progress}%` }}></div>
                 </div>
             )}

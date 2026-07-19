@@ -9,9 +9,10 @@ export interface ImageModalProps {
     type: string
     colors: Colors
     uuid: string
+    note: string | boolean
 }
 
-const ImageModal = ({ src, func, name, type, uuid }: ImageModalProps) => {
+const ImageModal = ({ src, func, name, type, uuid, note }: ImageModalProps) => {
 
     const nameRef = useRef<HTMLButtonElement>(null)
     const buttonRef = useRef<HTMLButtonElement>(null)
@@ -25,15 +26,16 @@ const ImageModal = ({ src, func, name, type, uuid }: ImageModalProps) => {
         if (nameRef.current) {
             setBgWidth(nameRef.current.offsetWidth)
         }
+        console.log(note)
     }, [])
 
     const handleOpen = () => {
         setOpen(prev => !prev)
-        if(!open){
+        if (!open) {
             setTimeout(() => {
                 setOpenBox(true)
             }, 144);
-        }else{
+        } else {
             setOpenBox(false)
         }
     }
@@ -79,37 +81,35 @@ const ImageModal = ({ src, func, name, type, uuid }: ImageModalProps) => {
                 {!src && (
                     <img src="https://placehold.co/600x400?text=Tidak+Ada+Foto" alt="" className=' rounded-2xl' />
                 )}
-
-                <section className={` rounded-2xl bg-neutral-100/20 backdrop-blur absolute z-80 top-48 right-8 transition-all duration-500
-                    ${open
-                        ? " w-[36%] p-4"
-                        : " w-[12%]"}`}
-                    onClick={() => handleOpen()}>
-                    <div className=" flex justify-start">
-                        <button type='button' className="p flex justify-center items-center text-neutral-100 p-2">
+                {note && (
+                    <section className={` rounded-2xl bg-neutral-100/20 backdrop-blur absolute z-80 top-48 right-8 transition-all duration-500
+                        ${open
+                            ? " w-[36%] p-4"
+                            : " w-[12%]"}`}
+                        onClick={() => handleOpen()}>
+                        <div className=" flex justify-start">
                             {!open && (
-                                <div className=' flex gap-2'>
-                                    <i className="bi bi-chevron-left"></i>
-                                    <span>Open</span>
-                                </div>
+                                <button type='button' className="flex justify-center items-center text-neutral-100 p-2">
+                                    <div className=' flex gap-2'>
+                                        <i className="bi bi-chevron-left"></i>
+                                        <span>Open</span>
+                                    </div>
+                                </button>
                             )}
-                            {open && (
-                                <i className="bi bi-chevron-right"></i>
-                            )}
-                        </button>
-                        {openBox && (
-                            <div className=" text-wrap break-all">
-                                <div className={` p-1 px-2 rounded-xl cursor-pointer capitalize text-neutral-200 font-mono activeBar transition-all duration-500
+                            {openBox && (
+                                <div className=" text-wrap break-all">
+                                    <div className={` p-1 px-2 rounded-xl cursor-pointer capitalize text-neutral-200 font-mono activeBar transition-all duration-500
                     border border-neutral-100/24 backdrop-blur bg-neutral-800/24 active:scale-90 w-fitk`}>
-                                    <p>Catatan</p>
+                                        <p>Catatan</p>
+                                    </div>
+                                    <div className=" text-neutral-100 text-xl">
+                                        <p>{note}</p>
+                                    </div>
                                 </div>
-                                <div className=" text-neutral-100">
-                                    <p>blablablablaabslblabjlbadjlasjdajldbljsdbjaldbaljbdjsd</p>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </section>
+                            )}
+                        </div>
+                    </section>
+                )}
 
                 <div className=" rounded-full bg-neutral-100/20 backdrop-blur absolute z-80 bottom-4 flex justify-between items-center p-2 w-[80%]">
                     {bgWidth && (
