@@ -24,6 +24,7 @@ const Form = ({ func }: FormI) => {
   const [isPhoto, setPhoto] = useState<boolean>(false)
   const [isCatatan, setCatatan] = useState<boolean>(false)
   const [isSubmit, setSubmit] = useState<boolean>(false)
+  const [isClear, setClear] = useState<boolean>(false)
 
   const [valueNama, setNamaValue] = useState<string>()
   const [valueKelas, setKelasValue] = useState<string>()
@@ -39,9 +40,8 @@ const Form = ({ func }: FormI) => {
     axios.get<{ status: boolean, data: ClassInterface[] }>("/api/classes")
       .then(data => {
         const fetched = data.data
-        console.log(fetched.data)
         if (!classes) {
-          setClasses(fetched.data)
+          setClasses(fetched.data.sort((a, b) => a.order - b.order))
         }
       })
 
@@ -141,16 +141,6 @@ const Form = ({ func }: FormI) => {
   }
 
   const handleSubmit = () => {
-
-    Swal.fire({
-      icon:"info",
-      title:"test",
-      toast:true,
-      showConfirmButton:false,
-      timer:3000,
-      timerProgressBar:true
-    })
-
     setSubmit(true)
     const formdata = new FormData()
     const formdataImg = new FormData()
@@ -162,6 +152,7 @@ const Form = ({ func }: FormI) => {
       axios.post("/api/upload", formdataImg)
         .then(response => {
           const result = response.data
+          setClear(true)
           console.log(result)
 
           if (result.status) {
@@ -174,9 +165,7 @@ const Form = ({ func }: FormI) => {
             formdata.append("image", result.link as string)
 
             if (isCatatan) {
-
-              formdata.append("catatan", valueCatatan as string)
-
+              formdata.append("note", valueCatatan as string)
             }
 
             axios.post("/api/reports", formdata)
@@ -213,6 +202,9 @@ const Form = ({ func }: FormI) => {
           <FieldSelect label='Pilih Kelas' icon='grid-3x3-gap-fill' placeholder='Pilih Kelas' datas={classes as unknown as customObject[]} name="class"
             func={handleClass} />
         )}
+        {!classes && (
+          <p>Fetching classes data...</p>
+        )}
         <FieldSelect label='Bentuk Laporan' icon='grid-3x3-gap-fill' placeholder='Opsi Laporan' datas={bentuk} name="report" func={handleType} />
         {type == "" && (
           <Fields label='Nama Guru' isDisabled={true} icon='person-badge' func={handleGuru} isTime={false} type='text' isDataSet={false} defaultValue={false} />
@@ -241,7 +233,7 @@ const Form = ({ func }: FormI) => {
         </section> */}
       </main>
       <section className=' flex flex-col gap-4'>
-        <Camera func={handleCamera} isSubmit={isSubmit} progress={progress} submitfunc={handleSubmit}/>
+        <Camera func={handleCamera} isSubmit={isSubmit} progress={progress} submitfunc={handleSubmit} isClear={isClear} />
         {/* {!isSubmit && (
           <button type="button" className=' bg-green-600 text-neutral-100 rounded-xl p-2 px-4 disabled:opacity-75 transition-all duration-500 disabled:cursor-not-allowed 
           hover:opacity-75' disabled={progress == 100 ? false : true} onClick={() => handleSubmit()}>

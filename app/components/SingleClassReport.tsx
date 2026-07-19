@@ -2,7 +2,6 @@ import { useState } from 'react';
 import ChartElement from './ChartElement';
 import Statusbox from './Statusbox'
 import ImageModal from './ImageModal';
-import NoteModal from './noteModal';
 
 export interface ISingleClassReport {
     data: DataClass
@@ -38,6 +37,7 @@ export interface Report {
     updatedAt: Date;
     __v: number;
     image: string
+    note: string | null
 }
 
 
@@ -47,6 +47,7 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
     const [name, setName] = useState<string>()
     const [type, setType] = useState<string>()
     const [show, setShow] = useState<boolean>(false)
+    const [note, setNote] = useState<string>()
 
     const toLatestList: Report[] = data?.reports?.toReversed()
 
@@ -58,10 +59,16 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
         setShow(!show)
     }
 
-    const handlePhoto = (img: string, name: string, type: string) => {
+    const handlePhoto = (img: string, name: string, type: string, note: string | boolean) => {
+        console.log(note)
         setPhoto(img)
         setName(name)
         setType(type)
+        if (typeof (note) == "string") {
+            setNote(note)
+        }else{
+            setNote(undefined)
+        }
         handleShow()
     }
     window.addEventListener("keydown", (e: KeyboardEvent) => {
@@ -113,7 +120,7 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
                                 <td className='border border-neutral-200 border-r-0 border-l-0 hidden lg:table-cell p-2 lg:p-4 text-xs lg:text-base'>
                                     {a.image && (
                                         <img src={a.image} alt="" className=' h-16 rounded-xl m-2 shadow'
-                                            onClick={() => handlePhoto(a.image, a.name, a.report_type)} />
+                                            onClick={() => handlePhoto(a.image, a.name, a.report_type, a.note ? a.note : false)} />
                                     )}
                                     {!a.image && (
                                         <img src={"https://placehold.co/600x400?text=Tidak+Ada+Foto"} alt="" className=' h-16 rounded-xl m-2 shadow' />
@@ -148,10 +155,9 @@ const SingleClassReport = ({ data }: ISingleClassReport) => {
             </section>
             {photo && show && name && type && (
                 <>
-                    <ImageModal src={photo} func={() => handleShow()} name={name} type={type} colors={data.colors} uuid={data.uuid} />
+                    <ImageModal src={photo} func={() => handleShow()} name={name} type={type} colors={data.colors} uuid={data.uuid} note={note ? note : false} />
                 </>
             )}
-            {/* <NoteModal func={()=>handleShow()} name={"Dedyas"} colors={data.colors} uuid={data.uuid}/>/ */}
         </main>
     )
 }

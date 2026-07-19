@@ -5,7 +5,8 @@ import connectMongo from "./connectMongo";
 import axios from "axios";
 
 export interface ClassInterface {
-  id: string;
+  _id:string
+  order:number
   grade: string;
   name: string;
   vocation: string;
