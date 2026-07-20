@@ -128,10 +128,10 @@ const Camera = ({ func, isSubmit, progress, submitfunc, isClear }: ICamera) => {
 
                             <button type='button' className=' p-2 px-4 bg-neutral-100/32 text-neutral-800 rounded-2xl transition-all duration-500 hover:opacity-75 disabled:cursor-not-allowed' disabled>
                                 <span>Ambil foto</span>
-                                <i className=' bi bi-check mx-2'></i>
+                                <i className=' bi bi-check-circle-fill mx-2'></i>
                             </button>
                             <button type="button"
-                                className={` bg-neutral-100/32 text-neutral-800 rounded-xl p-2 px-4 disabled:opacity-75 transition-all duration-500 cursor-pointer active:scale-95 disabled:cursor-not-allowed hover:opacity-75 ${progress == 100 ? " bg-green-600" : " "} `}
+                                className={` rounded-xl p-2 px-4 disabled:opacity-75 transition-all duration-500 cursor-pointer active:scale-95 disabled:cursor-not-allowed hover:opacity-75 ${progress == 100 ? " bg-green-200/64 text-green-600" : " bg-neutral-100/32 text-neutral-800"} `}
                                 disabled={progress == 100 ? false : true}
                                 onClick={() => {
                                     showSwal()
