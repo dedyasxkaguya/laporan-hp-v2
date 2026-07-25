@@ -134,30 +134,30 @@ const Page = () => {
                     <hr className=' text-neutral-400' />
                     <br />
                     <section className=' flex flex-col gap-4'>
-                        <div className="">
+                        <div className=" flex justify-between items-center">
                             <p className=' font-semibold font-mono text-lg lg:text-2xl'>Laporan Terbaru</p>
+                            {data && valid && (
+                                <div className=" flex gap-2">
+                                    <div className=" p-2 px-4 rounded-lg cursor-pointer bg-green-100 text-green-600 shadow text-xs lg:text-base">
+                                        Laporan Valid : {valid}
+                                    </div>
+                                    <div className=" p-2 px-4 rounded-lg cursor-pointer bg-red-100 text-red-600 shadow text-xs lg:text-base">
+                                        Laporan Invalid : {(data.length) - valid}
+                                    </div>
+                                </div>
+                            )}
+                            {!data && (
+                                <div className=" flex gap-2">
+                                    <div className=" p-2 px-4 rounded-lg bg-green-100 text-green-600 shadow opacity-75 cursor-not-allowed text-xs lg:text-base">
+                                        Laporan Valid : 0
+                                    </div>
+                                    <div className=" p-2 px-4 rounded-lg bg-red-100 text-red-600 shadow opacity-75 cursor-not-allowed text-xs lg:text-base">
+                                        Laporan Invalid : 0
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                        {data && valid && (
-                            <div className=" flex gap-2">
-                                <div className=" p-2 px-4 rounded-lg cursor-pointer bg-green-100 text-green-600 shadow text-xs lg:text-base">
-                                    Laporan Valid : {valid}
-                                </div>
-                                <div className=" p-2 px-4 rounded-lg cursor-pointer bg-red-100 text-red-600 shadow text-xs lg:text-base">
-                                    Laporan Invalid : {(data.length) - valid}
-                                </div>
-                            </div>
-                        )}
-                        {!data && (
-                            <div className=" flex gap-2">
-                                <div className=" p-2 px-4 rounded-lg bg-green-100 text-green-600 shadow opacity-75 cursor-not-allowed text-xs lg:text-base">
-                                    Laporan Valid : 0
-                                </div>
-                                <div className=" p-2 px-4 rounded-lg bg-red-100 text-red-600 shadow opacity-75 cursor-not-allowed text-xs lg:text-base">
-                                    Laporan Invalid : 0
-                                </div>
-                            </div>
-                        )}
-                        <hr className=' text-neutral-400' />
+                        {/* <hr className=' text-neutral-400' /> */}
                         <Classreport />
                     </section>
                 </main>

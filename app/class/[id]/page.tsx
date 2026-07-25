@@ -6,12 +6,11 @@ import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import SingleClassReport from '@/app/components/SingleClassReport';
-import Navbar from '@/app/components/Navbar';
 import * as XLSX from "xlsx"
 import { checkDevice } from '@/app/components/check';
 import Forbidden from '@/app/components/Error/Forbidden';
-import Lenis from 'lenis';
 import DynamicIsland from '@/app/components/DynamicIsland';
+import Chatbot from '@/app/components/Chatbot';
 
 export interface Data {
     status: boolean;
@@ -48,7 +47,7 @@ export interface Report {
     updatedAt: Date;
     __v: number;
     image: string
-    note:string | null
+    note: string | null
 }
 
 
@@ -79,16 +78,6 @@ const Page = () => {
     }
 
     useEffect(() => {
-        const lenis = new Lenis({
-            autoRaf: true,
-            lerp: 0.1,
-            smoothWheel: true,
-            duration: 1.5
-        })
-        lenis.start()
-        lenis.on("scroll", (e) => {
-            setScroll(e.progress !== 0 ? e.progress : .1)
-        })
         axios.get("/api")
             .then(data => {
                 console.log(data.data)
@@ -171,10 +160,10 @@ const Page = () => {
                 {/* <Navbar isGlass={scroll > .1 ? true : false} /> */}
                 <div className=" w-dvw h-fit flex justify-center items-center">
                     {student_class && (
-                        <DynamicIsland isHome={false} data={student_class}/>
+                        <DynamicIsland isHome={false} data={student_class} />
                     )}
                 </div>
-                <main className=' shadow border border-neutral-200 mt-8 mx-auto mb-[16dvh] p-4 rounded-3xl lg:p-6 w-[96dvw] lg:w-fit'>
+                <main className=' shadow border border-neutral-200 mt-8 mx-auto mb-[24dvh] p-4 rounded-3xl lg:p-6 w-[96dvw] lg:w-fit'>
                     <section className=' flex justify-between items-center text-xs lg:text-base'>
                         <div className=" p-2 px-4 rounded-xl bg-neutral-200 text-neutral-800 font-sans w-fit"
                             style={{ backgroundColor: student_class?.colors.subtle_color, color: student_class?.colors.primary_color }}>
@@ -223,6 +212,11 @@ const Page = () => {
                     {student_class && (
                         <section className=' mt-2'>
                             <SingleClassReport data={student_class} />
+                        </section>
+                    )}
+                    {student_class && (
+                        <section className=' max-w-[48dvw]'>
+                            <Chatbot data={student_class} />
                         </section>
                     )}
                     <section className=' flex gap-4 pt-8 text-sm lg:text-xl'>

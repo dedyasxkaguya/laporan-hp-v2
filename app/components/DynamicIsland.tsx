@@ -30,7 +30,7 @@ const DynamicIsland = ({ isHome, data, progress }: DynamicIslanInterface) => {
             id="liquid"
             className={`fixed top-12 left-1/2 -translate-x-1/2 p-4 flex flex-col items-center justify-center
                 bg-gray-200/36 backdrop-blur text-neutral-800 cursor-pointer h-fit
-                shadow shadow-white border transition-[width,border-radius,padding] duration-500 ease-in-out will-change-[width,border-radius]transform-gpu
+                shadow shadow-white border transition-[width,border-radius,padding] duration-1000 ease-in-out will-change-[width,border-radius]transform-gpu
                 ${open
                     ? "w-[48dvw] rounded-[1.8rem] gap-4 p-4"
                     : isHome

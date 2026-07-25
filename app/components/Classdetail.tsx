@@ -47,10 +47,14 @@ const Classdetail = ({data}:IClassDetail) => {
     return (
         <main>
             <section className=' flex gap-2 flex-wrap justify-between'>
-                <Fields label='Kelas' icon='mortarboard' isDisabled={true} isDataSet={false} type='text' func={handleDummy} isTime={false} defaultValue={data.uuid} />
-                <Fields label='Bidang' icon='book' isDisabled={true} isDataSet={false} type='text' func={handleDummy} isTime={false} defaultValue={data.vocation} />
-                <Fields label='Wali Kelas' icon='person-vcard' isDisabled={true} isDataSet={false} type='text' func={handleDummy} isTime={false} defaultValue={data.teacher_name} />
-                <Fields label='Ruang Kelas' icon='geo-alt' isDisabled={true} isDataSet={false} type='text' func={handleDummy} isTime={false} defaultValue={data.classroom} />
+                <Fields label='Kelas' icon='mortarboard' isDisabled={true} isDataSet={false} type='text' func={handleDummy} isTime={false} defaultValue={data.uuid} 
+                isError={false} errorMessage=''/>
+                <Fields label='Bidang' icon='book' isDisabled={true} isDataSet={false} type='text' func={handleDummy} isTime={false} defaultValue={data.vocation} 
+                isError={false} errorMessage=''/>
+                <Fields label='Wali Kelas' icon='person-vcard' isDisabled={true} isDataSet={false} type='text' func={handleDummy} isTime={false} defaultValue={data.teacher_name} 
+                isError={false} errorMessage=''/>
+                <Fields label='Ruang Kelas' icon='geo-alt' isDisabled={true} isDataSet={false} type='text' func={handleDummy} isTime={false} defaultValue={data.classroom} 
+                isError={false} errorMessage=''/>
             </section>
         </main>
     )

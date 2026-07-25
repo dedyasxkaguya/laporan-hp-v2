@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import Statusbox from './Statusbox';
 import Link from 'next/link';
+import FieldSelect from './FieldSelect';
+import Fields from './Fields';
+import { filterClassData } from '../lib/studentclass';
 
 export interface Data {
     status: boolean;
@@ -19,6 +22,8 @@ export interface Datum {
     classroom: string;
     colors: Colors;
     last_report?: LastReport;
+    order: number
+
 }
 
 export interface Colors {
@@ -52,6 +57,12 @@ export enum Vocation {
 
 const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
     const [data, setData] = useState<Datum[]>()
+    const [dataFiltered, setDataFiltered] = useState<Datum[]>()
+    const [gradeFilter, setGradeFilter] = useState<string[]>([])
+    const [nameFilter, setNameFilter] = useState<string>("")
+    const [typeFilter, setTypeFilter] = useState<string>("")
+    const [dateFilter, setDateFilter] = useState<Date | null>(null)
+
     useEffect(() => {
         axios.get<Data>("/api/classes")
             .then(data => {
@@ -59,12 +70,12 @@ const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
                 console.log(fetched)
                 if (fetched.status) {
                     setData(fetched.data)
+                    setDataFiltered(fetched.data)
                 } else {
                     console.log("Tidak dapat mengambil data, mencoba lagi...")
                     axios.get<Data>("/api/classes")
                         .then(data => {
                             const fetched = data.data
-                            console.log(fetched)
                             if (fetched.status) {
                                 setData(fetched.data)
                             }
@@ -73,9 +84,161 @@ const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
                 }
             })
     }, [])
+
+    const handleGradeFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        if (e.target.value) {
+            setGradeFilter([e.target.value])
+            if (data) {
+
+                filterClassData({
+                    data: data,
+                    dateFilter: dateFilter,
+                    gradeFilter: [e.target.value],
+                    nameFilter: nameFilter,
+                    typeFilter: typeFilter
+                })
+                    .then(data => {
+                        console.log(data)
+                        setDataFiltered(data)
+                    })
+            }
+        } else {
+            setGradeFilter([])
+            if (data) {
+
+                filterClassData({
+                    data: data,
+                    dateFilter: dateFilter,
+                    gradeFilter: [],
+                    nameFilter: nameFilter,
+                    typeFilter: typeFilter
+                })
+                    .then(data => {
+                        console.log(data)
+                        setDataFiltered(data)
+                    })
+            }
+        }
+    }
+
+    const handleNameFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setNameFilter(e.target.value)
+        if (data) {
+
+            filterClassData({
+                data: data,
+                dateFilter: dateFilter,
+                gradeFilter: gradeFilter,
+                nameFilter: e.target.value,
+                typeFilter: typeFilter
+            })
+                .then(data => {
+                    console.log(data)
+                    setDataFiltered(data)
+                })
+        }
+    }
+
+    const handleTypeFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setTypeFilter(e.target.value)
+        if (data) {
+
+            filterClassData({
+                data: data,
+                dateFilter: dateFilter,
+                gradeFilter: gradeFilter,
+                nameFilter: nameFilter,
+                typeFilter: e.target.value
+            })
+                .then(data => {
+                    console.log(data)
+                    setDataFiltered(data)
+                })
+        }
+    }
+
+    const handleDateFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.value) {
+            setDateFilter(new Date(e.target.value))
+            if (data) {
+
+                filterClassData({
+                    data: data,
+                    dateFilter: new Date(e.target.value),
+                    gradeFilter: gradeFilter,
+                    nameFilter: nameFilter,
+                    typeFilter: typeFilter
+                })
+                    .then(data => {
+                        console.log(data)
+                        setDataFiltered(data)
+                    })
+            }
+        }
+    }
+
+    const grades = [
+        {
+            id: 0,
+            text: "Default",
+            value: "",
+        },
+        {
+            id: 1,
+            text: "X",
+            value: "X",
+        },
+        {
+            id: 2,
+            text: "XI",
+            value: "XI",
+        },
+        {
+            id: 3,
+            text: "XII",
+            value: "XII",
+        }
+    ]
+
+    const types = [
+        {
+            id: 0,
+            text: "Default",
+            value: "",
+        },
+        {
+            id: 1,
+            text: "Pengumpulan",
+            value: "Pengumpulan",
+        },
+        {
+            id: 2,
+            text: "Peminjaman",
+            value: "Peminjaman",
+        },
+        {
+            id: 3,
+            text: "Pengambilan",
+            value: "Pengambilan",
+        }
+    ]
+
     return (
         <main>
-            <section></section>
+            <section className=' my-2'>
+                <p className=' text-neutral-400 mb-2'>
+                    <i className="bi bi-filter me-2"></i>
+                    <span>Filter</span>
+                </p>
+                <div className=' flex justify-start items-center gap-4'>
+                    <Fields label='Cari' icon='search' isDisabled={false} isTime={false} type='' isDataSet={false} defaultValue="" errorMessage='' isError={false}
+                        func={handleNameFilter} />
+                    <FieldSelect label='Kelas' icon='mortarboard' placeholder='Tingkatan Kelas' datas={grades} name='filter' func={handleGradeFilter} />
+                    <FieldSelect label='Tipe' icon='clipboard-check' placeholder='Pilih Tipe' datas={types} name='filter' func={handleTypeFilter} />
+                    <Fields label='Tanggal' icon='calendar-event' isDisabled={false} isTime={false} type='date' isDataSet={false} defaultValue="" errorMessage='' isError={false}
+                        func={handleDateFilter} />
+                </div>
+            </section>
             <section>
                 <p className=' font-semibold font-mono text-lg lg:text-2xl'>Laporan Gawai</p>
                 <table className=' table border-collapse border-spacing-2'>
@@ -88,7 +251,7 @@ const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
                             <td className=' text-neutral-400 font-mono text-sm lg:text-lg p-2 lg:p-4'>Petugas</td>
                             <td className=' text-neutral-400 font-mono text-sm lg:text-lg hidden lg:table-cell p-2 lg:p-4'>Tanggal</td>
                         </tr>
-                        {!data && (
+                        {!dataFiltered && (
                             <tr className='  text-xs lg:text-base'>
                                 <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4'>
                                     <Link href={'/class/'} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60 bg-neutral-400 text-neutral-400">
@@ -122,7 +285,7 @@ const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
                                 </td>
                             </tr>
                         )}
-                        {data?.map((a, index) => {
+                        {dataFiltered && dataFiltered.sort((a, b) => a.order - b.order).map((a, index) => {
                             return (
                                 <tr key={index} className=' text-xs lg:text-base'>
                                     <td className='border border-neutral-200 border-r-0 border-l-0 p-2 lg:p-4'>
@@ -167,6 +330,12 @@ const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
                         })}
                     </tbody>
                 </table>
+                {dataFiltered && dataFiltered.length == 0 && (
+                    <div className=' p-4 text-lg text-yellow-600 flex rounded-full w-fit'>
+                        <i className=' bi bi-info-circle me-2'></i>
+                        <p>Tidak menemukan data, mohon ubah filter atau kriteria</p>
+                    </div>
+                )}
             </section>
         </main>
     )
