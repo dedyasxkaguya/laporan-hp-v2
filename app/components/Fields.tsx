@@ -9,14 +9,18 @@ export interface IFieldProps {
   type: string
   isDataSet: ICustomObject[] | false
   defaultValue: string | false
+  errorMessage: string
+  isError: boolean
 }
 export interface ICustomObject {
   [key: string]: string | number
   [key: number]: string
 }
-const Fields = ({ label, icon, isDisabled, func, isTime, type, isDataSet, defaultValue }: IFieldProps) => {
+const Fields = ({ label, icon, isDisabled, func, isTime, type, isDataSet, defaultValue, errorMessage, isError }: IFieldProps) => {
+
   const [date, setDate] = useState<string>()
   const [time, setTime] = useState<string>()
+
   if (isTime) {
     setInterval(() => {
 
@@ -39,7 +43,8 @@ const Fields = ({ label, icon, isDisabled, func, isTime, type, isDataSet, defaul
           <span>{label}</span>
         </label>
         {type == "text" && (
-          <input type="text" name="" disabled={isDisabled} className=' p-2 rounded-lg border border-neutral-300 shadow disabled:bg-neutral-200 disabled:cursor-not-allowed' onChange={(e) => func(e)} value={`${date} ${time}`} />
+          <input type="text" name="" disabled={isDisabled} className={` p-2 rounded-lg border border-neutral-300 shadow disabled:bg-neutral-200 disabled:cursor-not-allowed`}
+            onChange={(e) => func(e)} value={`${date} ${time}`} />
         )}
 
         {type == "number" && (
@@ -52,11 +57,36 @@ const Fields = ({ label, icon, isDisabled, func, isTime, type, isDataSet, defaul
   if (type == "number") {
     return (
       <main className='flex flex-col gap-2'>
-        <label htmlFor="" className={`${isDisabled ? "text-neutral-400" : "text-blue-600"} font-semibold`}>
+        <label htmlFor="" className={`${isDisabled ? "text-neutral-400" : "text-blue-600"} font-semibold ${isError ? " text-red-400" : " text-blue-600"}`}>
           <i className={`bi bi-${icon} text-xl me-2`}></i>
           <span>{label}</span>
         </label>
-        <input type="number" name="" disabled={isDisabled} className=' p-2 rounded-lg border border-neutral-300 shadow disabled:bg-neutral-200 disabled:cursor-not-allowed' onChange={(e) => func(e)} max={36} min={1} />
+        <input type="number" name="" disabled={isDisabled} className={` p-2 rounded-lg border border-neutral-300 shadow disabled:bg-neutral-200 disabled:cursor-not-allowed 
+        ${isError ? " border-red-200" : " border-neutral-300"}`} onChange={(e) => func(e)} max={36} min={0} />
+        {isError && (
+          <label htmlFor="" className=' text-red-400'>
+            {errorMessage}
+          </label>
+        )}
+      </main>
+    )
+  }
+  if (type == "date") {
+    return (
+      <main className='flex flex-col gap-2'>
+        {label && (
+          <label htmlFor="" className={`${isDisabled ? "text-neutral-400" : "text-blue-600"} font-semibold ${isError ? " text-red-400" : " text-blue-600"}`}>
+            <i className={`bi bi-${icon} text-xl me-2`}></i>
+            <span>{label}</span>
+          </label>
+        )}
+        <input type="date" name="" disabled={isDisabled} className={` p-2 rounded-lg border border-neutral-300 shadow disabled:bg-neutral-200 disabled:cursor-not-allowed 
+        ${isError ? " border-red-200" : " border-neutral-300"}`} onChange={(e) => func(e)} />
+        {isError && (
+          <label htmlFor="" className=' text-red-400'>
+            {errorMessage}
+          </label>
+        )}
       </main>
     )
   }
@@ -71,7 +101,6 @@ const Fields = ({ label, icon, isDisabled, func, isTime, type, isDataSet, defaul
           onChange={(e) => func(e)} list={isDataSet ? "dataList" : ""} value={defaultValue} />
         {isDataSet && (
           <datalist id='dataList'>
-            this is funny
             {isDataSet.map((a, index) => {
               return (
                 <option value={a.name} key={index}>{a.name}</option>
@@ -82,13 +111,18 @@ const Fields = ({ label, icon, isDisabled, func, isTime, type, isDataSet, defaul
       </main>
     )
   }
+
   return (
     <main className='flex flex-col gap-2'>
-      <label htmlFor="" className={`${isDisabled ? "text-neutral-400" : "text-blue-600"} font-semibold`}>
-        <i className={`bi bi-${icon} text-xl me-2`}></i>
-        <span>{label}</span>
-      </label>
-      <input type="text" name="" disabled={isDisabled} className=' p-2 rounded-lg border border-neutral-300 shadow disabled:bg-neutral-200 disabled:cursor-not-allowed' onChange={(e) => func(e)} list={isDataSet ? "dataList" : ""} />
+      {label && (
+        <label htmlFor="" className={`${isDisabled ? "text-neutral-400" : "text-blue-600"} font-semibold ${isError ? " text-red-400" : " text-blue-600"}`}>
+          <i className={`bi bi-${icon} text-xl me-2`}></i>
+          <span>{label}</span>
+        </label>
+      )}
+      <input type="text" name="" disabled={isDisabled} className={` p-2 rounded-lg border shadow disabled:bg-neutral-200 disabled:cursor-not-allowed
+      ${isError ? " border-red-200" : " border-neutral-300"}`}
+        onChange={(e) => func(e)} list={isDataSet ? "dataList" : ""} />
       {isDataSet && (
         <datalist id='dataList'>
           this is funny
@@ -98,6 +132,11 @@ const Fields = ({ label, icon, isDisabled, func, isTime, type, isDataSet, defaul
             )
           })}
         </datalist>
+      )}
+      {isError && (
+        <label htmlFor="" className=' text-red-400'>
+          {errorMessage}
+        </label>
       )}
     </main>
   )

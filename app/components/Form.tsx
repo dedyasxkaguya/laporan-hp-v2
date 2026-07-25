@@ -26,6 +26,19 @@ const Form = ({ func }: FormI) => {
   const [isSubmit, setSubmit] = useState<boolean>(false)
   const [isClear, setClear] = useState<boolean>(false)
 
+  const [isNamaError, setNamaError] = useState<boolean>(false)
+  const [isPhoneError, setPhoneError] = useState<boolean>(false)
+  // const [isKelasError, setKelasError] = useState<boolean>(false)
+  // const [isBentukError, setBentukError] = useState<boolean>(false)
+  // const [isGuruError, setGuruError] = useState<boolean>(false)
+  // const [isPhotoError, setPhotoError] = useState<boolean>(false)
+  // const [isCatatanError, setCatatanError] = useState<boolean>(false)
+  // const [isSubmitError, setSubmitError] = useState<boolean>(false)
+  // const [isClearError, setClearError] = useState<boolean>(false)
+
+  const nameErrorMessage = "Nama tidak boleh melebihi 24 karakter"
+  const phoneErrorMessage = "Handphone tidak boleh lebih dari 36, jika tetap submit, maka akan terhitung 36"
+
   const [valueNama, setNamaValue] = useState<string>()
   const [valueKelas, setKelasValue] = useState<string>()
   const [valueBentuk, setBentukValue] = useState<string>()
@@ -69,10 +82,8 @@ const Form = ({ func }: FormI) => {
 
   const handleClass = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setClass(e.target.value)
-    console.log(classId)
     if (e.target.value) {
       setKelasValue(e.target.value)
-      console.log(e.target.value)
       if (!isKelas) {
         setKelas(true)
       }
@@ -83,9 +94,14 @@ const Form = ({ func }: FormI) => {
 
   const handleNama = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value) {
-      setNamaValue(e.target.value)
-      if (!isNama) {
-        setNama(true)
+      if (e.target.value.length <= 24) {
+        setNamaValue(e.target.value)
+        setNamaError(false)
+        if (!isNama) {
+          setNama(true)
+        }
+      } else {
+        setNamaError(true)
       }
     } else if (e.target.value == "") {
       setNama(false)
@@ -106,10 +122,12 @@ const Form = ({ func }: FormI) => {
   const handlePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (Number(e.target.value) <= 36) {
       setPhoneValue(Number(e.target.value))
+      setPhoneError(false)
       if (!isPhone) {
         setPhone(true)
       }
     } else if (Number(e.target.value) > 36) {
+      setPhoneError(true)
       setPhoneValue(36)
       if (!isPhone) {
         setPhone(true)
@@ -196,57 +214,45 @@ const Form = ({ func }: FormI) => {
   return (
     <section className=' flex gap-4'>
       <main className=' flex flex-col gap-4 mt-8 w-[40dvw]'>
-        <Fields label='Form Pengumpulan Gawai' isDisabled={true} icon='pencil-square' func={handleDummy} isTime={true} type='text' isDataSet={false} defaultValue={false} />
-        <Fields label='Nama Petugas' isDisabled={false} icon='person-badge' func={handleNama} isTime={false} type='text' isDataSet={false} defaultValue={false} />
+        <Fields label='Form Pengumpulan Gawai' isDisabled={true} icon='calender-event' func={handleDummy} isTime={true} type='text' isDataSet={false} defaultValue={false}
+          errorMessage='' isError={false} />
+        <Fields label='Nama Petugas' isDisabled={false} icon='person-badge' func={handleNama} isTime={false} type='text' isDataSet={false} defaultValue={false}
+          errorMessage={nameErrorMessage} isError={isNamaError} />
         {classes && (
-          <FieldSelect label='Pilih Kelas' icon='grid-3x3-gap-fill' placeholder='Pilih Kelas' datas={classes as unknown as customObject[]} name="class"
+          <FieldSelect label='Pilih Kelas' icon='mortarboard' placeholder='Pilih Kelas' datas={classes as unknown as customObject[]} name="class"
             func={handleClass} />
         )}
         {!classes && (
           <p>Fetching classes data...</p>
         )}
-        <FieldSelect label='Bentuk Laporan' icon='grid-3x3-gap-fill' placeholder='Opsi Laporan' datas={bentuk} name="report" func={handleType} />
+        <FieldSelect label='Bentuk Laporan' icon='clipboard-check' placeholder='Opsi Laporan' datas={bentuk} name="report" func={handleType} />
         {type == "" && (
-          <Fields label='Nama Guru' isDisabled={true} icon='person-badge' func={handleGuru} isTime={false} type='text' isDataSet={false} defaultValue={false} />
+          <Fields label='Nama Guru' isDisabled={true} icon='person-workspace' func={handleGuru} isTime={false} type='text' isDataSet={false} defaultValue={false}
+            errorMessage='' isError={false} />
         )}
         {type == "Pengumpulan" && (
-          <Fields label='Nama Guru Pertama' isDisabled={false} icon='person-badge' func={handleGuru} isTime={false} type='text' isDataSet={dataTeacher} defaultValue={false} />
+          <Fields label='Nama Guru Pertama' isDisabled={false} icon='person-workspace' func={handleGuru} isTime={false} type='text' isDataSet={dataTeacher} defaultValue={false}
+            errorMessage='' isError={false} />
         )}
         {type == "Peminjaman" && (
-          <Fields label='Nama Guru Penanggung Jawab' isDisabled={false} icon='person-badge' func={handleGuru} isTime={false} type='text' isDataSet={dataTeacher} defaultValue={false} />
+          <Fields label='Nama Guru Penanggung Jawab' isDisabled={false} icon='person-workspace' func={handleGuru} isTime={false} type='text' isDataSet={dataTeacher} defaultValue={false}
+            errorMessage='' isError={false} />
         )}
         {type == "Peminjaman" && (
-          <Fields label='Catatan' isDisabled={false} icon='exclamation-circle' func={handleCatatan} isTime={false} type='text' isDataSet={false} defaultValue={false} />
+          <Fields label='Catatan' isDisabled={false} icon='exclamation-circle' func={handleCatatan} isTime={false} type='text' isDataSet={false} defaultValue={false}
+            errorMessage='' isError={false} />
         )}
         {type == "Pengambilan" && (
-          <Fields label='Nama Guru Terakhir' isDisabled={false} icon='person-badge' func={handleGuru} isTime={false} type='text' isDataSet={dataTeacher} defaultValue={false} />
+          <Fields label='Nama Guru Terakhir' isDisabled={false} icon='person-workspace' func={handleGuru} isTime={false} type='text' isDataSet={dataTeacher} defaultValue={false}
+            errorMessage='' isError={false} />
         )}
 
-        <Fields label='Jumlah Handphone' isDisabled={false} icon='phone' func={handlePhone} isTime={false} type='number' isDataSet={false} defaultValue={false} />
+        <Fields label='Jumlah Handphone' isDisabled={false} icon='phone' func={handlePhone} isTime={false} type='number' isDataSet={false} defaultValue={false}
+          errorMessage={phoneErrorMessage} isError={isPhoneError} />
 
-        {/* <section className=' flex flex-col gap-4 '>
-          <p className=' text-neutral-400'>Progress</p>
-          <div className={`rounded-2xl w-full overflow-hidden border ${progress == 100 ? "border-green-600" : "border-blue-600"}`}>
-            <div className={` p-2 ${progress == 100 ? "bg-green-600 border-green-600" : "bg-blue-600 border-blue-600"} border transition-all duration-500 text-center 
-              text-neutral-50 ${progress > 1 ? "opacity-100" : "opacity-0"}`} style={{ width: `${progress}%` }}>{progress}%</div>
-          </div>
-        </section> */}
       </main>
       <section className=' flex flex-col gap-4'>
         <Camera func={handleCamera} isSubmit={isSubmit} progress={progress} submitfunc={handleSubmit} isClear={isClear} />
-        {/* {!isSubmit && (
-          <button type="button" className=' bg-green-600 text-neutral-100 rounded-xl p-2 px-4 disabled:opacity-75 transition-all duration-500 disabled:cursor-not-allowed 
-          hover:opacity-75' disabled={progress == 100 ? false : true} onClick={() => handleSubmit()}>
-            <span>Kirim Laporan</span>
-            <i className="bi bi-cloud-upload-fill mx-2"></i>
-          </button>
-        )}
-        {isSubmit && (
-          <button type="button" className=' bg-green-600 text-neutral-100 rounded-xl p-2 px-4 disabled:opacity-75 transition-all duration-500 disabled:cursor-wait 
-          hover:opacity-75' disabled={true} onClick={() => handleSubmit()}>
-            <span>Tunggu sebentar...</span>
-          </button>
-        )} */}
       </section>
     </section>
   )
