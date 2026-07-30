@@ -55,8 +55,8 @@ export enum Vocation {
     Informatika = "INFORMATIKA",
 }
 
-const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
-    const [data, setData] = useState<Datum[]>()
+const Classreport = ({ isAdmin, data }: { isAdmin?: boolean, data: Datum[] }) => {
+    // const [data, setData] = useState<Datum[]>()
     const [dataFiltered, setDataFiltered] = useState<Datum[]>()
     const [gradeFilter, setGradeFilter] = useState<string[]>([])
     const [nameFilter, setNameFilter] = useState<string>("")
@@ -69,18 +69,10 @@ const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
                 const fetched = data.data
                 console.log(fetched)
                 if (fetched.status) {
-                    setData(fetched.data)
+                    // setData(fetched.data)
                     setDataFiltered(fetched.data)
                 } else {
                     console.log("Tidak dapat mengambil data, mencoba lagi...")
-                    axios.get<Data>("/api/classes")
-                        .then(data => {
-                            const fetched = data.data
-                            if (fetched.status) {
-                                setData(fetched.data)
-                            }
-                        }
-                        )
                 }
             })
     }, [])
@@ -223,6 +215,10 @@ const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
         }
     ]
 
+    const handleRecent = (link: string) => {
+        localStorage.setItem("recent", link)
+    }
+
     return (
         <main>
             <section className=' my-2'>
@@ -297,7 +293,8 @@ const Classreport = ({ isAdmin }: { isAdmin?: boolean }) => {
                                         )}
                                         {!isAdmin && (
                                             <Link href={'/class/' + a._id} className=" scale-100 p-2 px-4 rounded-xl shadow transition-all duration-500 hover:scale-150 hover:opacity-60"
-                                                style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}>
+                                                style={{ backgroundColor: a.colors.subtle_color, color: a.colors.primary_color }}
+                                                onClick={() => handleRecent('/class/' + a._id)}>
                                                 {a.grade} {a.name}
                                             </Link>
                                         )}

@@ -19,6 +19,7 @@ export interface Data {
     classroom: string;
     colors: Colors;
     last_report?: LastReport;
+    order:number
 }
 
 export interface Colors {
@@ -44,6 +45,7 @@ export interface LastReport {
     createdAt: Date;
     updatedAt: Date;
     __v: number;
+
 }
 
 export enum Vocation {
@@ -168,7 +170,7 @@ const Page = () => {
                             </div>
                         )}
                         <hr className=' text-neutral-400' />
-                        <Classreport isAdmin={true} />
+                        <Classreport isAdmin={true} data={data ? data : []}/>
                     </section>
                 </main>
             </>

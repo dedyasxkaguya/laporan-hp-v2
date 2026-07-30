@@ -8,6 +8,7 @@ import { checkDevice } from '../components/check';
 import Forbidden from '../components/Error/Forbidden';
 import Lenis from 'lenis';
 import DynamicIsland from '../components/DynamicIsland';
+import Tabs, { statusEnum } from '../components/Tabs';
 export interface Data {
     _id: string;
     grade: Grade;
@@ -18,6 +19,7 @@ export interface Data {
     classroom: string;
     colors: Colors;
     last_report?: LastReport;
+    order: number;
 }
 
 export interface Colors {
@@ -157,10 +159,10 @@ const Page = () => {
                                 </div>
                             )}
                         </div>
-                        {/* <hr className=' text-neutral-400' /> */}
-                        <Classreport />
+                        <Classreport data={data ? data : []} />
                     </section>
                 </main>
+                <Tabs status={statusEnum.class} />
             </>
         )
     }

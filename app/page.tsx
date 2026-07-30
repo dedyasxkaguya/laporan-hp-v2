@@ -9,6 +9,7 @@ import Forbidden from './components/Error/Forbidden'
 import Lenis from 'lenis'
 import Welcomepage from './components/Welcomepage'
 import DynamicIsland from './components/DynamicIsland'
+import Tabs, { statusEnum } from './components/Tabs'
 const Page = () => {
   const [isWelcome, setWelcome] = useState<boolean>(true)
   const [isAndroid, setCheckOS] = useState<boolean>()
@@ -60,6 +61,7 @@ const Page = () => {
             <Form func={handleProgress} />
           </section>
         </main>
+        <Tabs status={statusEnum.home}/>
       </>
     )
   }

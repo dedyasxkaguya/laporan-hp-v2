@@ -6,6 +6,7 @@
 }
 html {
   scroll-behavior: smooth;
+  height: auto;
 }
 @theme inline {
   --color-background: var(--background);
@@ -35,6 +36,12 @@ html {
 }
 .fade-left {
   animation: left 2s ease-in-out forwards;
+}
+.active-tab{
+  /* background-color: oklch(97% 0.014 254.604); */
+  /* background-color: ; */
+  color: oklch(54.6% 0.245 262.881);
+
 }
 @keyframes animate-fade {
   0% {
